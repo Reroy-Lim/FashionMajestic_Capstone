@@ -1,9 +1,11 @@
 import streamlit as st
-from user_size_version3 import (
+from user_size_version3 import (  # or from User_size_version3 import
     estimate_base_size, 
-    convert_to_uk,
-    display_size_recommendation,
-    show_size_range
+    convert_to_uk, 
+    show_size_range,
+    get_gender_input, 
+    get_user_input, 
+    get_optional_measurement
 )
 
 # Page configuration
