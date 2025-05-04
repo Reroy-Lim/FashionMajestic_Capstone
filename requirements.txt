@@ -2,8 +2,5 @@ streamlit==1.45.0
 python-dateutil==2.9.0
 pytz==2025.2
 numpy==1.26.0
-pandas==2.1.3
-streamlit_webrtc
+pandas==2.2.3  # updated version
 streamlit-extras
-
-
