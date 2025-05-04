@@ -1,5 +1,5 @@
 streamlit==1.45.0
 python-dateutil==2.9.0
 pytz==2025.2
-numpy==1.26.0  # Add if your size calculator uses math operations
-pandas==2.1.0   # Add if processing measurement data
+numpy==1.26.0
+pandas==2.1.0
