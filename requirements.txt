@@ -4,4 +4,6 @@ pytz==2025.2
 numpy==1.26.0
 pandas==2.1.3
 streamlit_webrtc
+streamlit-extras
+
 
