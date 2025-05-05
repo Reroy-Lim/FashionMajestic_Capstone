@@ -1,3 +1,6 @@
+# Run this code on the terminal, to open the website application
+streamlit run majesti_vision.py 
+
 import streamlit as st
 from user_size_version3 import (  # or from User_size_version3 import
     estimate_base_size, 
