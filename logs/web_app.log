@@ -1,0 +1,87 @@
+2025-05-06 14:17:07 - web_app - INFO - Web application starting
+2025-05-06 14:17:07 - web_app - INFO - Web application starting
+2025-05-06 14:17:08 - root - INFO - Session state initialized
+2025-05-06 14:17:10 - web_app - INFO - Web application starting
+2025-05-06 14:17:10 - web_app - INFO - Web application starting
+2025-05-06 14:17:10 - web_app - INFO - Web application starting
+2025-05-06 14:17:10 - web_app - INFO - Web application starting
+2025-05-06 14:17:13 - web_app - INFO - Web application starting
+2025-05-06 14:17:13 - web_app - INFO - Web application starting
+2025-05-06 14:17:13 - web_app - INFO - Web application starting
+2025-05-06 14:17:13 - web_app - INFO - Web application starting
+2025-05-06 14:17:13 - web_app - INFO - Web application starting
+2025-05-06 14:17:13 - web_app - INFO - Web application starting
+2025-05-06 14:17:13 - root - INFO - Login attempt for user: asd
+2025-05-06 14:17:13 - root - INFO - Login attempt for user: asd
+2025-05-06 14:17:13 - root - INFO - Login attempt for user: asd
+2025-05-06 14:17:13 - root - INFO - User logged in: asd
+2025-05-06 14:17:13 - root - INFO - User logged in: asd
+2025-05-06 14:17:13 - root - INFO - User logged in: asd
+2025-05-06 14:17:13 - web_app - INFO - Web application starting
+2025-05-06 14:17:13 - web_app - INFO - Web application starting
+2025-05-06 14:17:13 - web_app - INFO - Web application starting
+2025-05-06 14:17:13 - web_app - INFO - Web application starting
+2025-05-06 14:17:13 - web_app - INFO - Web application starting
+2025-05-06 14:17:13 - web_app - INFO - Web application starting
+2025-05-06 14:17:13 - web_app - INFO - Web application starting
+2025-05-06 14:17:13 - web_app - INFO - Web application starting
+2025-05-06 14:17:41 - web_app - INFO - Web application starting
+2025-05-06 14:17:41 - web_app - INFO - Web application starting
+2025-05-06 14:17:41 - web_app - INFO - Web application starting
+2025-05-06 14:17:41 - web_app - INFO - Web application starting
+2025-05-06 14:17:41 - web_app - INFO - Web application starting
+2025-05-06 14:17:41 - web_app - INFO - Web application starting
+2025-05-06 14:17:41 - web_app - INFO - Web application starting
+2025-05-06 14:17:41 - web_app - INFO - Web application starting
+2025-05-06 14:17:41 - web_app - INFO - Web application starting
+2025-05-06 14:17:41 - web_app - INFO - Web application starting
+2025-05-06 14:17:41 - root - INFO - Initial size based on BMI: M
+2025-05-06 14:17:41 - root - INFO - Initial size based on BMI: M
+2025-05-06 14:17:41 - root - INFO - Initial size based on BMI: M
+2025-05-06 14:17:41 - root - INFO - Initial size based on BMI: M
+2025-05-06 14:17:41 - root - INFO - Initial size based on BMI: M
+2025-05-06 14:17:41 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Size range displayed: S-L (UK 8-UK 12)
+2025-05-06 14:17:41 - root - INFO - Size range displayed: S-L (UK 8-UK 12)
+2025-05-06 14:17:41 - root - INFO - Size range displayed: S-L (UK 8-UK 12)
+2025-05-06 14:17:41 - root - INFO - Size range displayed: S-L (UK 8-UK 12)
+2025-05-06 14:17:41 - root - INFO - Size range displayed: S-L (UK 8-UK 12)
+2025-05-06 14:17:41 - root - INFO - Size calculation: M (UK 10)
+2025-05-06 14:17:41 - root - INFO - Size calculation: M (UK 10)
+2025-05-06 14:17:41 - root - INFO - Size calculation: M (UK 10)
+2025-05-06 14:17:41 - root - INFO - Size calculation: M (UK 10)
+2025-05-06 14:17:41 - root - INFO - Size calculation: M (UK 10)
+2025-05-06 14:17:41 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Size recommendation displayed successfully
+2025-05-06 14:17:41 - root - INFO - Size recommendation displayed successfully
+2025-05-06 14:17:41 - root - INFO - Size recommendation displayed successfully
+2025-05-06 14:17:41 - root - INFO - Size recommendation displayed successfully
+2025-05-06 14:17:41 - root - INFO - Size recommendation displayed successfully

@@ -1,0 +1,141 @@
+2025-05-06 13:50:45 - root - INFO - Starting UK Size Fit Recommender
+2025-05-06 13:50:52 - root - INFO - Selected clothing type: tshirt
+2025-05-06 13:51:00 - root - INFO - Consent denied for height and weight
+2025-05-06 13:51:00 - root - WARNING - Basic measurements consent denied
+2025-05-06 13:51:09 - root - INFO - Selected clothing type: tshirt
+2025-05-06 13:51:09 - root - INFO - Consent given for height and weight
+2025-05-06 13:51:15 - root - INFO - Valid input received: 175.0 for Height in cm (e.g. 172 or 172.5)
+2025-05-06 13:51:22 - root - INFO - Valid input received: 110.0 for Weight in kg (e.g. 68 or 68.50)
+2025-05-06 13:51:25 - root - INFO - Valid gender selected: male
+2025-05-06 13:51:30 - root - INFO - Chest measurement skipped
+2025-05-06 13:51:31 - root - INFO - Waist measurement skipped
+2025-05-06 13:51:31 - root - INFO - Initial size based on BMI: XXL
+2025-05-06 13:51:31 - root - INFO - Converted XXL to UK 44 for male tshirt
+2025-05-06 13:51:31 - root - INFO - Converted XL to UK 42 for male tshirt
+2025-05-06 13:51:31 - root - INFO - Converted XXL to UK 44 for male tshirt
+2025-05-06 13:51:31 - root - INFO - Size range displayed: XL-XXL (UK 42-UK 44)
+2025-05-06 13:51:31 - root - INFO - Converted XXL to UK 44 for male tshirt
+2025-05-06 13:51:31 - root - INFO - Final recommendation displayed: {"clothing_type": "tshirt", "gender": "male", "age": null, "base_size": "XXL", "uk_size": "UK 44"}
+2025-05-06 13:51:56 - root - INFO - Selected clothing type: pants
+2025-05-06 13:51:58 - root - INFO - Consent given for height and weight
+2025-05-06 13:52:00 - root - INFO - Valid input received: 175.0 for Height in cm (e.g. 172 or 172.5)
+2025-05-06 13:52:01 - root - INFO - Valid input received: 110.0 for Weight in kg (e.g. 68 or 68.50)
+2025-05-06 13:52:02 - root - INFO - Valid gender selected: male
+2025-05-06 13:52:04 - root - INFO - Chest measurement skipped
+2025-05-06 13:52:05 - root - INFO - Waist measurement skipped
+2025-05-06 13:52:05 - root - INFO - Initial size based on BMI: XXL
+2025-05-06 13:52:10 - root - INFO - Valid age input received: 37
+2025-05-06 13:52:10 - root - INFO - Converted XXL to UK 40 for male pants
+2025-05-06 13:52:10 - root - INFO - Converted XL to UK 38 for male pants
+2025-05-06 13:52:10 - root - INFO - Converted XXL to UK 40 for male pants
+2025-05-06 13:52:10 - root - INFO - Size range displayed: XL-XXL (UK 38-UK 40)
+2025-05-06 13:52:10 - root - INFO - Converted XXL to UK 40 for male pants
+2025-05-06 13:52:10 - root - INFO - Final recommendation displayed: {"clothing_type": "pants", "gender": "male", "age": 37, "base_size": "XXL", "uk_size": "UK 40"}
+2025-05-06 13:59:32 - root - CRITICAL - Application error: `set_page_config()` can only be called once per app page, and must be called as the first Streamlit command in your script.
+
+For more information refer to the [docs](https://docs.streamlit.io/develop/api-reference/configuration/st.set_page_config).
+Traceback (most recent call last):
+  File "/Users/amir/Offline/capstone_2_fashion_recommendation/majesti_vision.py", line 620, in main
+    st.set_page_config(
+  File "/Users/amir/Offline/capstone_2_fashion_recommendation/venv/lib/python3.11/site-packages/streamlit/runtime/metrics_util.py", line 444, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amir/Offline/capstone_2_fashion_recommendation/venv/lib/python3.11/site-packages/streamlit/commands/page_config.py", line 273, in set_page_config
+    ctx.enqueue(msg)
+  File "/Users/amir/Offline/capstone_2_fashion_recommendation/venv/lib/python3.11/site-packages/streamlit/runtime/scriptrunner_utils/script_run_context.py", line 192, in enqueue
+    raise StreamlitSetPageConfigMustBeFirstCommandError()
+streamlit.errors.StreamlitSetPageConfigMustBeFirstCommandError: `set_page_config()` can only be called once per app page, and must be called as the first Streamlit command in your script.
+
+For more information refer to the [docs](https://docs.streamlit.io/develop/api-reference/configuration/st.set_page_config).
+2025-05-06 13:59:32 - root - CRITICAL - Application error: `set_page_config()` can only be called once per app page, and must be called as the first Streamlit command in your script.
+
+For more information refer to the [docs](https://docs.streamlit.io/develop/api-reference/configuration/st.set_page_config).
+Traceback (most recent call last):
+  File "/Users/amir/Offline/capstone_2_fashion_recommendation/majesti_vision.py", line 620, in main
+    st.set_page_config(
+  File "/Users/amir/Offline/capstone_2_fashion_recommendation/venv/lib/python3.11/site-packages/streamlit/runtime/metrics_util.py", line 444, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amir/Offline/capstone_2_fashion_recommendation/venv/lib/python3.11/site-packages/streamlit/commands/page_config.py", line 273, in set_page_config
+    ctx.enqueue(msg)
+  File "/Users/amir/Offline/capstone_2_fashion_recommendation/venv/lib/python3.11/site-packages/streamlit/runtime/scriptrunner_utils/script_run_context.py", line 192, in enqueue
+    raise StreamlitSetPageConfigMustBeFirstCommandError()
+streamlit.errors.StreamlitSetPageConfigMustBeFirstCommandError: `set_page_config()` can only be called once per app page, and must be called as the first Streamlit command in your script.
+
+For more information refer to the [docs](https://docs.streamlit.io/develop/api-reference/configuration/st.set_page_config).
+2025-05-06 14:00:29 - root - INFO - Session state initialized
+2025-05-06 14:00:29 - root - INFO - Session state initialized
+2025-05-06 14:00:36 - root - INFO - Login attempt for user: asd
+2025-05-06 14:00:36 - root - INFO - Login attempt for user: asd
+2025-05-06 14:00:36 - root - INFO - Login attempt for user: asd
+2025-05-06 14:00:36 - root - INFO - User logged in: asd
+2025-05-06 14:00:36 - root - INFO - User logged in: asd
+2025-05-06 14:00:36 - root - INFO - User logged in: asd
+2025-05-06 14:00:58 - root - INFO - Initial size based on BMI: M
+2025-05-06 14:00:58 - root - INFO - Initial size based on BMI: M
+2025-05-06 14:00:58 - root - INFO - Initial size based on BMI: M
+2025-05-06 14:00:58 - root - INFO - Initial size based on BMI: M
+2025-05-06 14:00:58 - root - INFO - Initial size based on BMI: M
+2025-05-06 14:00:58 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Size range displayed: S-L (UK 8-UK 12)
+2025-05-06 14:00:58 - root - INFO - Size range displayed: S-L (UK 8-UK 12)
+2025-05-06 14:00:58 - root - INFO - Size range displayed: S-L (UK 8-UK 12)
+2025-05-06 14:00:58 - root - INFO - Size range displayed: S-L (UK 8-UK 12)
+2025-05-06 14:00:58 - root - INFO - Size range displayed: S-L (UK 8-UK 12)
+2025-05-06 14:00:58 - root - INFO - Size calculation: M (UK 10)
+2025-05-06 14:00:58 - root - INFO - Size calculation: M (UK 10)
+2025-05-06 14:00:58 - root - INFO - Size calculation: M (UK 10)
+2025-05-06 14:00:58 - root - INFO - Size calculation: M (UK 10)
+2025-05-06 14:00:58 - root - INFO - Size calculation: M (UK 10)
+2025-05-06 14:00:58 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:00:58 - root - INFO - Size recommendation displayed successfully
+2025-05-06 14:00:58 - root - INFO - Size recommendation displayed successfully
+2025-05-06 14:00:58 - root - INFO - Size recommendation displayed successfully
+2025-05-06 14:00:58 - root - INFO - Size recommendation displayed successfully
+2025-05-06 14:00:58 - root - INFO - Size recommendation displayed successfully
+2025-05-06 14:17:07 - web_app - INFO - Web application starting
+2025-05-06 14:17:08 - root - INFO - Session state initialized
+2025-05-06 14:17:10 - web_app - INFO - Web application starting
+2025-05-06 14:17:13 - web_app - INFO - Web application starting
+2025-05-06 14:17:13 - root - INFO - Login attempt for user: asd
+2025-05-06 14:17:13 - root - INFO - User logged in: asd
+2025-05-06 14:17:13 - web_app - INFO - Web application starting
+2025-05-06 14:17:41 - web_app - INFO - Web application starting
+2025-05-06 14:17:41 - root - INFO - Initial size based on BMI: M
+2025-05-06 14:17:41 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted M to UK 10 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Size range displayed: S-L (UK 8-UK 12)
+2025-05-06 14:17:41 - root - INFO - Size calculation: M (UK 10)
+2025-05-06 14:17:41 - root - INFO - Converted S to UK 8 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Converted L to UK 12 for female tshirt
+2025-05-06 14:17:41 - root - INFO - Size recommendation displayed successfully

@@ -4,3 +4,4 @@ pytz==2025.2
 numpy==1.26.0
 pandas==2.2.3  # updated version
 streamlit-extras
+watchdog; sys_platform == 'darwin'
