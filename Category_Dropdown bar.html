@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Measurements</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4ecdf;
+        }
+
+        /* Main content */
+        .content {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .content h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        /* Dropdown box */
+        .dropdown-container {
+            margin: 0 auto;
+            width: 500px;
+        }
+
+        .dropdown {
+            width: 100%;
+            border: 2px solid black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .dropdown-arrow {
+            font-size: 18px;
+        }
+
+        .dropdown-options {
+            display: none;
+            border: 1px solid #aaa;
+            border-top: none;
+            background-color: white;
+        }
+
+        .dropdown-option {
+            padding: 12px;
+            border-top: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .dropdown-option:hover {
+            background-color: #f0f0f0;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Size Measurement</h1>
+        <p>To assist you in finding the right clothes, please select your<br>measurement range for the following:</p>
+
+        <div class="dropdown-container">
+            <div class="dropdown" onclick="toggleDropdown()">
+                <span>Please Select Category Types:</span>
+                <span class="dropdown-arrow">&#x25BC;</span>
+            </div>
+            <div id="dropdownOptions" class="dropdown-options">
+                <div class="dropdown-option">T-Shirt</div>
+                <div class="dropdown-option">Long pants</div>
+                <div class="dropdown-option">Short pants</div>
+                <div class="dropdown-option">Dress</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            document.getElementById("dropdownOptions").classList.toggle("show");
+        }
+    </script>
+</body>
+</html>

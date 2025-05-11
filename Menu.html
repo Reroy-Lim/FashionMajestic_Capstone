@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MajestiVision</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f4f5;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #e6a7c2;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .nav-button {
+            background-color: #6b4f1e;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        .browser-tab {
+            background-color: #f0f0f0;
+            padding: 8px 15px;
+            border-radius: 5px 5px 0 0;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .browser-tab-close {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .browser-add {
+            background-color: #e6a7c2;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .address-bar {
+            background-color: #6b4f1e;
+            border-radius: 15px;
+            padding: 8px 15px;
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+        .icon {
+            margin-right: 10px;
+            color: #e6d8c0;
+        }
+        .settings-icon {
+            margin-left: auto;
+            cursor: pointer;
+        }
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e6f2f2;
+            min-height: 80vh;
+            text-align: center;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo svg {
+            width: 100%;
+            height: 100%;
+        }
+        .logo-text {
+            color: #1a3b5d;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .search-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .search-bar {
+            width: 70%;
+            padding: 8px 15px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+        }
+        .filter-icon, .search-icon {
+            background: white;
+            border: 1px solid #ccc;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .welcome-text {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+        .sub-text {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 25px;
+        }
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .product-name {
+            padding: 12px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        .profile {
+            width: 40px;
+            height: 40px;
+            background-color: #f0e6d0;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        /* Added styles for the navigation menu */
+        .nav-menu {
+            position: absolute;
+            top: 60px;
+            left: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: none;
+            width: 200px;
+            z-index: 100;
+        }
+        
+        .nav-menu.show {
+            display: block;
+        }
+        
+        .nav-menu-item {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            text-align: left;
+        }
+        
+        .nav-menu-item:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .nav-menu-item:last-child {
+            border-bottom: none;
+        }
+        
+        .nav-menu-item a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="profile" onclick="toggleNavMenu()"></div>
+        <button class="nav-button" onclick="toggleNavMenu()">Menu Page</button>
+        <a href="/logout"><button class="nav-button">Logout</button></a>
+        <div class="browser-tab">Menu Page <span class="browser-tab-close">✕</span></div>
+        <button class="browser-add">+</button>
+    </div>
+    
+    <div class="address-bar">
+        <span class="icon">←</span>
+        <span class="icon">→</span>
+        <span class="icon">🔄</span>
+        <span>https://www.MajestiVision.com.sg</span>
+        <span class="settings-icon">⚙️</span>
+    </div>
+    
+    <!-- Navigation menu popup -->
+    <div id="navMenu" class="nav-menu">
+        <div class="nav-menu-item"><a href="/measurements">Size Measurements</a></div>
+        <div class="nav-menu-item"><a href="#">My Profile</a></div>
+        <div class="nav-menu-item"><a href="#">Order History</a></div>
+        <div class="nav-menu-item"><a href="#">Settings</a></div>
+        <div class="nav-menu-item"><a href="/logout">Logout</a></div>
+    </div>
+    
+    <div class="main-content">
+        <div class="navigation">
+            <a href="/category-dropdown">Category Dropdown</a> | 
+            <a href="/input-measurement">Input Measurement</a> |
+            <a href="Searchbar_filter.html">Search Filters</a>
+
+        </div>
+    </div>
+        <div class="logo-container">
+            <div class="logo">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Gradient Circle -->
+                    <defs>
+                        <linearGradient id="circleGradient" gradientTransform="rotate(45)">
+                            <stop offset="0%" stop-color="#5de0e6" />
+                            <stop offset="25%" stop-color="#44a7d8" />
+                            <stop offset="50%" stop-color="#2e4fa1" />
+                            <stop offset="75%" stop-color="#6344a3" />
+                            <stop offset="100%" stop-color="#e05ca0" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Outer Circle -->
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="url(#circleGradient)" stroke-width="12" />
+                    
+                    <!-- Eye Outline -->
+                    <path d="M50,100 C50,70 100,50 150,100 C100,150 50,130 50,100 Z" fill="none" stroke="#1a3b5d" stroke-width="4" />
+                    
+                    <!-- Inner Eye Circle -->
+                    <circle cx="100" cy="100" r="30" fill="#1a3b5d" />
+                    
+                    <!-- Eye Reflection -->
+                    <circle cx="85" cy="90" r="8" fill="white" />
+                    
+                    <!-- Crosshair -->
+                    <line x1="100" y1="60" x2="100" y2="140" stroke="#1a3b5d" stroke-width="3" />
+                    <line x1="60" y1="100" x2="140" y2="100" stroke="#1a3b5d" stroke-width="3" />
+                    
+                    <!-- Star -->
+                    <polygon points="160,70 165,80 175,82 165,88 163,100 155,90 145,88 155,82" fill="#f9ca24" />
+                </svg>
+            </div>
+            <div class="logo-text">MajestiVision</div>
+            <div style="flex-grow: 1;"></div>
+            <div class="search-container">
+                <input type="text" class="search-bar" placeholder="Search for your product here">
+                <div class="filter-icon" onclick="window.location.href='Searchbar_filter.html'">⋮≡</div>
+                <div class="search-icon">🔍</div>
+            </div>
+        </div>
+        
+        <div class="welcome-text">Hello :)</div>
+        <div class="sub-text">What are you looking for today?</div>
+        
+        <div class="product-grid">
+            <a href="Item_page.html" style="text-decoration: none; color: inherit;">
+                <div class="product-card">
+                    <img src="/api/placeholder/300/300" alt="Shirt" class="product-image">
+                    <div class="product-name">Women's Casual Summer V-Neck Ruffle Sleeve Shirt, Light Brown</div>
+                </div>
+              </a>
+              
+            <div class="product-card">
+                <img src="/api/placeholder/300/300" alt="Top" class="product-image">
+                <div class="product-name">Top</div>
+            </div>
+            <div class="product-card">
+                <img src="/api/placeholder/300/300" alt="Dress" class="product-image">
+                <div class="product-name">Dress</div>
+            </div>
+            <div class="product-card">
+                <img src="/api/placeholder/300/300" alt="Skirt" class="product-image">
+                <div class="product-name">Skirt</div>
+            </div>
+            <div class="product-card">
+                <img src="/api/placeholder/300/300" alt="Shorts" class="product-image">
+                <div class="product-name">Shorts</div>
+            </div>
+            <div class="product-card">
+                <img src="/api/placeholder/300/300" alt="T-Shirt" class="product-image">
+                <div class="product-name">T-Shirt</div>
+            </div>
+            <div class="product-card">
+                <img src="/api/placeholder/300/300" alt="Shirt" class="product-image">
+                <div class="product-name">Shirt</div>
+            </div>
+            <div class="product-card">
+                <img src="/api/placeholder/300/300" alt="Jacket" class="product-image">
+                <div class="product-name">Jacket</div>
+            </div>
+            <div class="product-card">
+                <img src="/api/placeholder/300/300" alt="Sweater" class="product-image">
+                <div class="product-name">Sweater</div>
+            </div>
+            <div class="product-card">
+                <img src="/api/placeholder/300/300" alt="Pants" class="product-image">
+                <div class="product-name">Pants</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function toggleNavMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('show');
+        }
+        
+        // Close the menu when clicking outside of it
+        window.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('navMenu');
+            const profileBtn = document.querySelector('.profile');
+            const menuBtn = document.querySelector('.nav-button');
+            
+            if (!profileBtn.contains(event.target) && 
+                !menuBtn.contains(event.target) && 
+                !navMenu.contains(event.target)) {
+                navMenu.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

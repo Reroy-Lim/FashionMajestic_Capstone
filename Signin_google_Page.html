@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Choose an account - MajestiVision</title>
+  <style>
+    body {
+      font-family: Roboto, Arial, sans-serif;
+      background-color: #fff;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 450px;
+      border: 1px solid #dadce0;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 16px 24px;
+      border-bottom: 1px solid #dadce0;
+    }
+
+    .google-logo {
+      width: 20px;
+      margin-right: 10px;
+    }
+
+    .header-text {
+      font-size: 14px;
+      color: #5f6368;
+    }
+
+    .content {
+      padding: 40px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .openai-logo {
+      width: 48px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-weight: 400;
+      font-size: 24px;
+      margin: 0 0 32px;
+      color: #202124;
+    }
+
+    .account-option {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .account-option:hover {
+      background-color: #f1f3f4;
+    }
+
+    .profile-img {
+      width: 40px;
+      height: 40px;
+      background-color: #ccc;
+      border-radius: 50%;
+      margin-right: 16px;
+    }
+
+    .email-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .email {
+      font-size: 14px;
+      color: #202124;
+    }
+
+    .desc {
+      font-size: 12px;
+      color: #5f6368;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #5f6368;
+    }
+
+    .footer a {
+      color: #1a73e8;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" class="google-logo">
+      <span class="header-text">Sign in with Google</span>
+    </div>
+    <div class="content">
+      <img src="MajestiVision logo.jpeg" alt="MajestiVision Logo" class="openai-logo">
+      <h2>Choose an account</h2>
+
+      <!-- Account Option 1 -->
+      <div class="account-option" onclick="location.href='selected.html?user=user1@example.com'">
+        <div class="profile-img"></div>
+        <div class="email-info">
+          <div class="email">user1@example.com</div>
+          <div class="desc">User One</div>
+        </div>
+      </div>
+
+      <!-- Account Option 2 -->
+      <div class="account-option" onclick="location.href='selected.html?user=user2@example.com'">
+        <div class="profile-img"></div>
+        <div class="email-info">
+          <div class="email">user2@example.com</div>
+          <div class="desc">User Two</div>
+        </div>
+      </div>
+
+      <div class="footer">to continue to <a href="#">MajestiVision</a></div>
+    </div>
+  </div>
+
+</body>
+</html>

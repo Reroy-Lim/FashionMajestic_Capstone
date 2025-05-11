@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MajestiVision Product Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #f3fbfc;
+    }
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: white;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 1px solid #ccc;
+    }
+    .logo {
+      height: 50px;
+      margin-right: 10px;
+    }
+    .brand {
+      font-size: 28px;
+      font-weight: bold;
+      color: #2b5f84;
+    }
+    .search-bar {
+      margin-left: 20px;
+      flex-grow: 1;
+    }
+    .search-bar input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .scrollable-content {
+      margin-top: 90px;
+      height: calc(100% - 90px);
+      overflow-y: auto;
+      padding: 20px;
+    }
+    .product-container {
+      display: flex;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .product-image {
+      width: 300px;
+    }
+    .product-details {
+      margin-left: 30px;
+      max-width: 600px;
+    }
+    .product-details h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .rating {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+    .price {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+    .colors {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .color-circle {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+    }
+    .size-link {
+      margin-left: 10px;
+      font-size: 16px;
+    }
+    .add-to-cart {
+      background-color: #e3f0f1;
+      padding: 15px 30px;
+      font-size: 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: #333;
+      margin-top: 20px;
+    }
+
+    .suggestions {
+      margin-top: 40px;
+    }
+    .suggestions h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    .suggestion-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .suggestion-card {
+      background: white;
+      border-radius: 8px;
+      padding: 10px;
+      width: 220px;
+      text-align: center;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    }
+    .suggestion-card img {
+      width: 100%;
+      border-radius: 4px;
+    }
+    .suggestion-card .price {
+      font-weight: bold;
+      font-size: 16px;
+      margin-top: 8px;
+    }
+    .suggestion-card .stars {
+      color: #f4c150;
+      font-size: 14px;
+    }
+    .suggestion-card .title {
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <img src="MajestiVision logo.jpeg" alt="MajestiVision Logo" class="logo">
+    <div class="brand">MajestiVision</div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search for your product here">
+    </div>
+  </div>
+
+  <div class="scrollable-content">
+    <div class="product-container">
+      <img src="Main Shirt.jpg" alt="Main Shirt" class="product-image">
+      <div class="product-details">
+        <h2>Women's Casual Summer V-Neck Ruffle Sleeve Shirt, Light Brown</h2>
+        <div class="rating">Rating: ⭐⭐⭐⭐☆ &nbsp; 120 Sold</div>
+        <div class="price">$20.00</div>
+
+        <div class="colors">
+          <span>Colors:</span>
+          <div class="color-circle" style="background-color: #73866B;"></div>
+          <div class="color-circle" style="background-color: #2C3A4F;"></div>
+          <div class="color-circle" style="background-color: #DB9875;"></div>
+          <a href="Input_measurement.html" class="size-link">Size Chart</a>
+
+        </div>
+
+        <div class="suggestions">
+          <h3>Products you might like:</h3>
+          <div class="suggestion-row">
+            <div class="suggestion-card">
+              <img src="Green Cropped Top-V Neck Pleated Tie T-Shirt.jpg" alt="Green Cropped Top">
+              <p class="price">$19.00 <span class="stars">⭐⭐⭐⭐⭐</span></p>
+              <p class="title">Green Cropped Top V-Neck Pleated Tie T-Shirt</p>
+            </div>
+            <div class="suggestion-card">
+              <img src="Ladies's Summer Flying Sleeve Shirt.jpg" alt="Flying Sleeve Shirt">
+              <p class="price">$16.00 <span class="stars">⭐⭐⭐⭐⭐</span></p>
+              <p class="title">Ladies' Summer Flying Sleeve Shirt</p>
+            </div>
+            <div class="suggestion-card">
+              <img src="Womens Short Sleeve Deep V Neck Drawstring Tee Top.jpg" alt="Drawstring Tee">
+              <p class="price">$20.00 <span class="stars">⭐⭐⭐⭐⭐</span></p>
+              <p class="title">Womens Short Sleeve Deep V Neck Drawstring Tee Top</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

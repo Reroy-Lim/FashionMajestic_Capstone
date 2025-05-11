@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Filters</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #d2d2d2b7;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    .filters-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 30px;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .filter-section,
+    .price-range {
+      border: 2px solid black;
+      border-radius: 10px;
+      padding: 15px;
+      width: 200px;
+      max-height: 300px;
+      overflow-y: auto;
+      box-sizing: border-box;
+      text-align: left;
+      background-color: white;
+    }
+
+    .filter-section strong,
+    .price-range strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .filter-section label,
+    .rating-stars label {
+      display: flex;
+      align-items: center;
+      margin: 6px 0;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+
+    select {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .rating-stars .star {
+      color: gold;
+      margin-right: 5px;
+      font-size: 16px;
+    }
+
+    .rating-stars label {
+      justify-content: space-between;
+    }
+
+    .btn-container {
+      margin-top: 30px;
+    }
+
+    button {
+      background-color: #5d84c4;
+      color: white;
+      font-size: 18px;
+      padding: 10px 30px;
+      border: none;
+      border-radius: 5px;
+      margin: 0 15px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #3e65a0;
+    }
+
+    .more-link {
+      display: block;
+      margin-top: 10px;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .success-message {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px 40px;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 1000;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .success-message.show {
+      display: block;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Search Filters</h1>
+
+<div class="filters-wrapper">
+
+  <!-- Example Filter Sections (keep or expand as needed) -->
+  <div class="filter-section">
+    <strong>Made in:</strong>
+    <label><input type="checkbox" checked> Singapore</label>
+    <label><input type="checkbox"> United States</label>
+    <label><input type="checkbox"> United Kingdom</label>
+    <label><input type="checkbox"> Vietnam</label>
+    <label><input type="checkbox"> China</label>
+    <span class="more-link">More?</span>
+  </div>
+
+  <div class="price-range">
+    <strong>Price Range:</strong>
+    <label>Min Price:</label>
+    <select>
+      <option>$30</option>
+      <option>$50</option>
+      <option>$100</option>
+      <option>$150</option>
+    </select>
+    <label>Max Price:</label>
+    <select>
+      <option>$150</option>
+      <option>$200</option>
+      <option>$250</option>
+      <option>$300</option>
+    </select>
+  </div>
+
+  <div class="filter-section rating-stars">
+    <strong>Ratings:</strong>
+    <label><span class="star">⭐⭐⭐⭐⭐</span><input type="checkbox"></label>
+    <label><span class="star">⭐⭐⭐⭐</span> and up<input type="checkbox" checked></label>
+    <label><span class="star">⭐⭐⭐</span> and up<input type="checkbox"></label>
+    <label><span class="star">⭐⭐</span> and up<input type="checkbox"></label>
+    <label><span class="star">⭐</span> and up<input type="checkbox"></label>
+  </div>
+
+  <div class="filter-section">
+    <strong>Material:</strong>
+    <label><input type="checkbox" checked> Cotton</label>
+    <label><input type="checkbox"> Polyester</label>
+    <label><input type="checkbox"> Nylon</label>
+    <label><input type="checkbox"> Linen</label>
+    <label><input type="checkbox"> Poly-Cotton</label>
+  </div>
+
+</div>
+
+<div class="btn-container">
+  <button id="backBtn">Back</button>
+  <button id="saveBtn">Save</button>
+</div>
+
+<div class="success-message" id="successMessage">
+  Save Successful!
+</div>
+
+<script>
+  // Save confirmation
+  document.getElementById('saveBtn').addEventListener('click', function() {
+    const msg = document.getElementById('successMessage');
+    msg.classList.add('show');
+    setTimeout(() => msg.classList.remove('show'), 2000);
+  });
+
+  // Smart back behavior
+  document.getElementById('backBtn').addEventListener('click', function() {
+    if (document.referrer && !document.referrer.includes('Searchbar_filter.html')) {
+      window.history.back();
+    } else {
+      window.location.href = 'Menu.html';
+    }
+  });
+</script>
+
+</body>
+</html>

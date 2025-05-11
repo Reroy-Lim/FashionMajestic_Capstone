@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MajestiVision Sign-Up Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f5f0;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      background-color: #e78ca8;
+    }
+
+    .navbar button {
+      margin-right: 10px;
+      padding: 5px 15px;
+      border: none;
+      background-color: #5a4012;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .navbar .tab {
+      background-color: #d4cba1;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 50px);
+      padding: 20px;
+    }
+
+    .logo {
+      width: 40%;
+      text-align: center;
+    }
+
+    .logo img {
+      width: 80%;
+    }
+
+    .form-container {
+      width: 40%;
+      background-color: #f9f5f0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      color: #5a4012;
+      font-size: 24px;
+      text-decoration: underline;
+      white-space: nowrap;
+      margin: 0 0 20px 0;
+    }
+
+    .form-container label {
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #5a4012;
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #5a4012;
+      border-radius: 5px;
+    }
+
+    .form-container .btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-container .btn-create {
+      background-color: #add8e6; /* Light blue */
+      color: black;
+    }
+
+    .form-container .btn-create:hover {
+      background-color: #9ac7e0;
+    }
+
+    .form-container .google-btn {
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .form-container .google-btn img {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+
+    .form-container .google-btn:hover {
+      background-color: #f0f0f0;
+    }
+
+    .form-container .or-text {
+      text-align: center;
+      margin: 10px 0 5px 0;
+      font-weight: bold;
+      color: #5a4012;
+    }
+
+    .form-container a {
+      color: #5a4012;
+      text-decoration: none;
+      font-size: 12px;
+      text-align: center;
+      display: block;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+</div>
+  <div class="container">
+    <div class="logo">
+      <img src="MajestiVision logo.jpeg" alt="MajestiVision Logo" />
+    </div>
+    <div class="form-container">
+      <h2>Create your account</h2>
+      <form>
+        <label for="first-name">First Name:</label>
+        <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" />
+
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" />
+
+        <label for="email">Your email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter a secure password" />
+
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" placeholder="Re-enter your password" />
+
+        <button type="submit" class="btn btn-create">Create</button>
+        <div class="or-text">OR</div>
+        <a href="Signin_google_Page.html" class="btn google-btn">
+          <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" />
+          Login with Google
+        </a>
+        
+      </form>
+      <a href="#">Already have an account? Login?</a>
+    </div>
+  </div>
+</body>
+</html>
