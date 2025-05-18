@@ -1,4 +1,3 @@
-<!-- Feature 2 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,6 +36,17 @@
   <div class="overlay">
     <div class="overlay-text">Calculating size...</div>
   </div>
+  <script>
+  function redirectToRecommendation() {
+  const recommended = document.getElementById("recommended-size").textContent;
+  const gender = document.querySelector('input[name="gender"]:checked')?.value;
 
+  if (recommended && recommended !== "-") {
+    window.location.href = `based_measurements_recommendscreen.html?recommended=${recommended}&gender=${gender}`;
+  } else {
+    alert("Please calculate size first.");
+  }
+}
+  </script>
 </body>
 </html>

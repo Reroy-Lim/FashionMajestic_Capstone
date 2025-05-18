@@ -19,20 +19,20 @@
 
     .filters-wrapper {
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 30px;
       flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
       max-width: 1200px;
       margin: 0 auto;
     }
 
     .filter-section,
     .price-range {
+      flex: 1 1 calc(33.333% - 30px);
+      max-width: calc(33.333% - 30px);
       border: 2px solid black;
       border-radius: 10px;
       padding: 15px;
-      width: 200px;
       max-height: 300px;
       overflow-y: auto;
       box-sizing: border-box;
@@ -84,7 +84,7 @@
 
     button {
       background-color: #5d84c4;
-      color: white;
+      color: rgb(224, 217, 217);
       font-size: 18px;
       padding: 10px 30px;
       border: none;
@@ -95,15 +95,6 @@
 
     button:hover {
       background-color: #3e65a0;
-    }
-
-    .more-link {
-      display: block;
-      margin-top: 10px;
-      text-decoration: underline;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 14px;
     }
 
     .success-message {
@@ -136,28 +127,38 @@
 
 <div class="filters-wrapper">
 
-  <!-- Example Filter Sections (keep or expand as needed) -->
+  <!-- Type of Clothing -->
+  <div class="filter-section">
+    <strong>Type of Clothing:</strong>
+    <label><input type="checkbox"> T-Shirt</label>
+    <label><input type="checkbox"> Long Pants</label>
+    <label><input type="checkbox"> Shorts</label>
+    <label><input type="checkbox"> Dress</label>
+  </div>
+
+  <!-- Made In -->
   <div class="filter-section">
     <strong>Made in:</strong>
-    <label><input type="checkbox" checked> Singapore</label>
+    <label><input type="checkbox"> Singapore</label>
     <label><input type="checkbox"> United States</label>
     <label><input type="checkbox"> United Kingdom</label>
     <label><input type="checkbox"> Vietnam</label>
     <label><input type="checkbox"> China</label>
-    <span class="more-link">More?</span>
   </div>
 
+  <!-- Price Range -->
   <div class="price-range">
     <strong>Price Range:</strong>
-    <label>Min Price:</label>
-    <select>
+    <label for="min-price">Min Price:</label>
+    <select id="min-price">
       <option>$30</option>
       <option>$50</option>
       <option>$100</option>
       <option>$150</option>
     </select>
-    <label>Max Price:</label>
-    <select>
+
+    <label for="max-price">Max Price:</label>
+    <select id="max-price">
       <option>$150</option>
       <option>$200</option>
       <option>$250</option>
@@ -165,18 +166,66 @@
     </select>
   </div>
 
+  <!-- Ratings -->
   <div class="filter-section rating-stars">
     <strong>Ratings:</strong>
     <label><span class="star">⭐⭐⭐⭐⭐</span><input type="checkbox"></label>
-    <label><span class="star">⭐⭐⭐⭐</span> and up<input type="checkbox" checked></label>
-    <label><span class="star">⭐⭐⭐</span> and up<input type="checkbox"></label>
-    <label><span class="star">⭐⭐</span> and up<input type="checkbox"></label>
-    <label><span class="star">⭐</span> and up<input type="checkbox"></label>
+    <label><span class="star">⭐⭐⭐⭐</span><input type="checkbox"></label>
+    <label><span class="star">⭐⭐⭐</span><input type="checkbox"></label>
+    <label><span class="star">⭐⭐</span><input type="checkbox"></label>
+    <label><span class="star">⭐</span><input type="checkbox"></label>
   </div>
 
+  <!-- Color -->
+  <div class="filter-section">
+    <strong>Color:</strong>
+    <label><input type="checkbox"> Beige</label>
+    <label><input type="checkbox"> Black</label>
+    <label><input type="checkbox"> Blue</label>
+    <label><input type="checkbox"> Brown</label>
+    <label><input type="checkbox"> Burgundy</label>
+    <label><input type="checkbox"> Navy Blue</label>
+    <label><input type="checkbox"> Grey</label>
+    <label><input type="checkbox"> Green</label>
+    <label><input type="checkbox"> Purple</label>
+    <label><input type="checkbox"> White</label>
+    <label><input type="checkbox"> Charcoal</label>
+    <label><input type="checkbox"> Coffee Brown</label>
+    <label><input type="checkbox"> Cream</label>
+    <label><input type="checkbox"> Fluorescent Green</label>
+    <label><input type="checkbox"> Grey Melange</label>
+    <label><input type="checkbox"> Khaki</label>
+    <label><input type="checkbox"> Lavender</label>
+    <label><input type="checkbox"> Lime Green</label>
+    <label><input type="checkbox"> Magenta</label>
+    <label><input type="checkbox"> Maroon</label>
+    <label><input type="checkbox"> Mauve</label>
+    <label><input type="checkbox"> Multi</label>
+    <label><input type="checkbox"> Yellow</label>
+    <label><input type="checkbox"> Turquoise Blue</label>
+    <label><input type="checkbox"> Teal</label>
+    <label><input type="checkbox"> Taupe</label>
+    <label><input type="checkbox"> Tan</label>
+    <label><input type="checkbox"> Skin</label>
+    <label><input type="checkbox"> Silver</label>
+    <label><input type="checkbox"> Sea Green</label>
+    <label><input type="checkbox"> Rust</label>
+    <label><input type="checkbox"> Rose</label>
+    <label><input type="checkbox"> Red Purple</label>
+    <label><input type="checkbox"> Pink</label>
+    <label><input type="checkbox"> Peach</label>
+    <label><input type="checkbox"> Orange</label>
+    <label><input type="checkbox"> Off White</label>
+    <label><input type="checkbox"> Olive</label>
+    <label><input type="checkbox"> Nude</label>
+    <label><input type="checkbox"> Mustard</label>
+    <label><input type="checkbox"> Mushroom Brown</label>
+  </div>
+
+  <!-- Material -->
   <div class="filter-section">
     <strong>Material:</strong>
-    <label><input type="checkbox" checked> Cotton</label>
+    <label><input type="checkbox"> Cotton</label>
     <label><input type="checkbox"> Polyester</label>
     <label><input type="checkbox"> Nylon</label>
     <label><input type="checkbox"> Linen</label>
@@ -195,19 +244,18 @@
 </div>
 
 <script>
-  // Save confirmation
-  document.getElementById('saveBtn').addEventListener('click', function() {
-    const msg = document.getElementById('successMessage');
-    msg.classList.add('show');
-    setTimeout(() => msg.classList.remove('show'), 2000);
+  document.getElementById('saveBtn').addEventListener('click', function () {
+    const successMessage = document.getElementById('successMessage');
+    successMessage.classList.add('show');
+    setTimeout(function () {
+      successMessage.classList.remove('show');
+    }, 2000);
   });
-
-  // Smart back behavior
   document.getElementById('backBtn').addEventListener('click', function() {
     if (document.referrer && !document.referrer.includes('Searchbar_filter.html')) {
       window.history.back();
     } else {
-      window.location.href = 'Menu.html';
+      window.location.href = "{{ url_for('Menu') }}";
     }
   });
 </script>

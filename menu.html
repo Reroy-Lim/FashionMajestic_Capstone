@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MajestiVision</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6f4f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #e6f2f2;
+      min-height: 80vh;
+      text-align: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      margin-right: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .logo-text {
+      color: #1a3b5d;
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    .search-container {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .search-bar {
+      flex-grow: 1;
+      padding: 8px 15px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+    }
+
+    .filter-icon,
+    .search-icon {
+      background: white;
+      border: 1px solid #ccc;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .welcome-text {
+      font-size: 1.5em;
+      margin-bottom: 5px;
+    }
+
+    .sub-text {
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 25px;
+      justify-items: center;
+    }
+
+    .product-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+      width: 100%;
+      max-width: 360px;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-name {
+      padding: 12px;
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-content">
+    <div class="logo-container">
+      <div class="logo">
+        <!-- SVG LOGO -->
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="circleGradient" gradientTransform="rotate(45)">
+              <stop offset="0%" stop-color="#5de0e6" />
+              <stop offset="25%" stop-color="#44a7d8" />
+              <stop offset="50%" stop-color="#2e4fa1" />
+              <stop offset="75%" stop-color="#6344a3" />
+              <stop offset="100%" stop-color="#e05ca0" />
+            </linearGradient>
+          </defs>
+          <circle cx="100" cy="100" r="90" fill="none" stroke="url(#circleGradient)" stroke-width="12" />
+          <path d="M50,100 C50,70 100,50 150,100 C100,150 50,130 50,100 Z" fill="none" stroke="#1a3b5d" stroke-width="4" />
+          <circle cx="100" cy="100" r="30" fill="#1a3b5d" />
+          <circle cx="85" cy="90" r="8" fill="white" />
+          <line x1="100" y1="60" x2="100" y2="140" stroke="#1a3b5d" stroke-width="3" />
+          <line x1="60" y1="100" x2="140" y2="100" stroke="#1a3b5d" stroke-width="3" />
+          <polygon points="160,70 165,80 175,82 165,88 163,100 155,90 145,88 155,82" fill="#f9ca24" />
+        </svg>
+      </div>
+      <div class="logo-text">MajestiVision</div>
+    </div>
+
+    <div class="search-container">
+        <input type="text" class="search-bar" placeholder="Search for your product here">
+        <div class="filter-icon" onclick="window.location.href='/searchFilter'">⋮≡</div>
+        <div class="search-icon">🔍</div>
+    </div>
+
+    <div class="welcome-text">Hello :)</div>
+    <div class="sub-text">What are you looking for today?</div>
+
+    <div class="product-grid">
+      <a href="/shop/Topwear/" class="product-card">
+        <img src="/static/images/Top.jpg" alt="Topwear" class="product-image" />
+        <div class="product-name">Topwear</div>
+      </a>
+
+      <a href="/shop/Dress">
+        <div class="product-card">
+          <img src="/static/images/Dress.jpg" alt="Dress" class="product-image" />
+          <div class="product-name">Dress</div>
+        </div>
+      </a>
+      <a href="/shop/Bottomwear">
+        <div class="product-card">
+          <img src="/static/images/Skirt.jpg" alt="Bottomwear" class="product-image" />
+          <div class="product-name">Bottomwear</div>
+        </div>
+      </a>
+      <a href="/shop/Loungewear and Nightwear">
+        <div class="product-card">
+          <img src="/static/images/LW&NW.jpg" alt="LW & NW" class="product-image" />
+          <div class="product-name">Lounge & Nightwear</div>
+        </div>
+      </a>
+      <a href="/shop/Innerwear">
+        <div class="product-card">
+          <img src="/static/images/Innerwear.jpg" alt="Innerwear" class="product-image" />
+          <div class="product-name">Innerwear</div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <script>
+  const searchInput = document.getElementById('search-input');
+  const productCards = document.querySelectorAll('.product-card');
+
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase();
+    productCards.forEach(card => {
+      const name = card.querySelector('.product-name').textContent.toLowerCase();
+      card.style.display = name.includes(query) ? 'block' : 'none';
+    });
+  });
+</script>
+<script>
+document.getElementById('search-input').addEventListener('input', function () {
+  const query = this.value.trim();
+  fetch(`/search?q=${encodeURIComponent(query)}`)
+    .then(res => res.json())
+    .then(data => {
+      const grid = document.querySelector('.product-grid');
+      grid.innerHTML = '';
+
+      if (data.length === 0) {
+        grid.innerHTML = '<p>No results found.</p>';
+        return;
+      }
+
+      data.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <img src="/images/${item.articleType}.jpg" class="product-image" />
+          <div class="product-name">${item.productDisplayName}</div>
+        `;
+        grid.appendChild(card);
+      });
+    });
+});
+</script>
+
+</body>
+</html>

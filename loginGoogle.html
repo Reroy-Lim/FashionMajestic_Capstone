@@ -119,12 +119,11 @@
       <span class="header-text">Sign in with Google</span>
     </div>
     <div class="content">
-      <img src="{{ url_for('static', filename='images/MajestiVision_logo.jpeg') }}" class="openai-logo">
+      <img src="/static/images/MajestiVision logo.jpeg" alt="MajestiVision Logo" class="openai-logo">
       <h2>Choose an account</h2>
 
       <!-- Account Option 1 -->
-      <div class="account-option" onclick="location.href='{{ url_for('selected_google') }}?user=user1@example.com'">
-
+      <div class="account-option" onclick="location.href='selected/user1@example.com'">
         <div class="profile-img"></div>
         <div class="email-info">
           <div class="email">user1@example.com</div>
@@ -133,7 +132,7 @@
       </div>
 
       <!-- Account Option 2 -->
-      <div class="account-option" onclick="location.href='{{ url_for('selected_google') }}?user=user2@example.com'">
+      <div class="account-option" onclick="location.href='selected/user2@example.com'">
         <div class="profile-img"></div>
         <div class="email-info">
           <div class="email">user2@example.com</div>
@@ -142,7 +141,6 @@
       </div>
 
       <div class="footer">to continue to <a href="#">MajestiVision</a></div>
-      
     </div>
   </div>
 

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MajestiVision</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f4f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e6f2f2;
+            min-height: 80vh;
+            text-align: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo-text {
+            color: #1a3b5d;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .error-msg {
+          margin: auto;
+          width: 50%;
+          padding: 10px;
+          font-size: 1.5em
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <div class="logo-container">
+            <div class="logo">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="circleGradient" gradientTransform="rotate(45)">
+                            <stop offset="0%" stop-color="#5de0e6" />
+                            <stop offset="25%" stop-color="#44a7d8" />
+                            <stop offset="50%" stop-color="#2e4fa1" />
+                            <stop offset="75%" stop-color="#6344a3" />
+                            <stop offset="100%" stop-color="#e05ca0" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="url(#circleGradient)" stroke-width="12" />
+                    <path d="M50,100 C50,70 100,50 150,100 C100,150 50,130 50,100 Z" fill="none" stroke="#1a3b5d" stroke-width="4" />
+                    <circle cx="100" cy="100" r="30" fill="#1a3b5d" />
+                    <circle cx="85" cy="90" r="8" fill="white" />
+                    <line x1="100" y1="60" x2="100" y2="140" stroke="#1a3b5d" stroke-width="3" />
+                    <line x1="60" y1="100" x2="140" y2="100" stroke="#1a3b5d" stroke-width="3" />
+                    <polygon points="160,70 165,80 175,82 165,88 163,100 155,90 145,88 155,82" fill="#f9ca24" />
+                </svg>
+            </div>
+            <div class="logo-text">MajestiVision</div>
+        </div>
+
+        <div class="error-msg">
+            <h1 class="display-5">ERROR</h1>
+            <h1 class="display-5">{{ error_header }}</h1>
+            <p>{{ error_message }}</p>
+        </div> <br>
+    </div>
+</body>
+</html>
+

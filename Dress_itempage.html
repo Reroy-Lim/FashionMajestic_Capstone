@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MajestiVision</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6f4f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #e6f2f2;
+      min-height: 80vh;
+      text-align: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      margin-right: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .logo-text {
+      color: #1a3b5d;
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    .search-container {
+      display: flex;
+      margin-bottom: 30px;
+      gap: 10px;
+    }
+
+    .search-bar {
+      flex-grow: 1;
+      padding: 8px 15px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+    }
+
+    .filter-icon,
+    .search-icon {
+      background: white;
+      border: 1px solid #ccc;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .welcome-text {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .main-product {
+      width: 250px;
+      height: auto;
+      object-fit: contain;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .sub-text {
+      color: #666;
+      margin: 20px 0;
+      font-size: 1.1em;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 25px;
+      justify-items: center;
+    }
+
+    .product-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      width: 100%;
+      max-width: 180px;
+      text-align: center;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-name {
+      padding: 12px;
+      font-size: 1em;
+      font-weight: bold;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      
+    }
+    .search-icon {
+      background: white;
+      border: 1px solid #ccc;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="main-content">
+    <!-- Logo -->
+    <div class="logo-container">
+      <div class="logo">
+        <!-- Gradient Eye Logo SVG -->
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="circleGradient" gradientTransform="rotate(45)">
+              <stop offset="0%" stop-color="#5de0e6" />
+              <stop offset="25%" stop-color="#44a7d8" />
+              <stop offset="50%" stop-color="#2e4fa1" />
+              <stop offset="75%" stop-color="#6344a3" />
+              <stop offset="100%" stop-color="#e05ca0" />
+            </linearGradient>
+          </defs>
+          <circle cx="100" cy="100" r="90" fill="none" stroke="url(#circleGradient)" stroke-width="12" />
+          <path d="M50,100 C50,70 100,50 150,100 C100,150 50,130 50,100 Z" fill="none" stroke="#1a3b5d" stroke-width="4" />
+          <circle cx="100" cy="100" r="30" fill="#1a3b5d" />
+          <circle cx="85" cy="90" r="8" fill="white" />
+          <line x1="100" y1="60" x2="100" y2="140" stroke="#1a3b5d" stroke-width="3" />
+          <line x1="60" y1="100" x2="140" y2="100" stroke="#1a3b5d" stroke-width="3" />
+          <polygon points="160,70 165,80 175,82 165,88 163,100 155,90 145,88 155,82" fill="#f9ca24" />
+        </svg>
+      </div>
+      <div class="logo-text">MajestiVision</div>
+    </div>
+
+    <!-- Search -->
+  <form class="search-container" action="{{ url_for('search_results') }}" method="GET">
+    <input type="text" name="query" class="search-bar" placeholder="Search for your product here" required />
+    <button type="submit" class="search-icon" title="Search">🔍</button>
+  </form>
+
+
+    <!-- Main Product -->
+    <div class="welcome-text">Top</div>
+    <img src="Top.jpg" alt="Main Product" class="main-product" />
+    <div class="sub-text">What are you looking for today?</div>
+
+    <!-- Recommended Products -->
+    <div class="product-grid">
+      <a href="{{ url_for('Item_page') }}">
+        <div class="product-card">
+          <img src="Main_Product.jpg" alt="Shirt" class="product-image" />
+          <div class="product-name">Women's Casual Summer V-Neck Ruffle Sleeve Shirt, Light Green</div>
+        </div>
+      </a>
+      <a href="{{ url_for('Item_page') }}">
+        <div class="product-card">
+          <img src="Main_Product.jpg" alt="Shirt" class="product-image" />
+          <div class="product-name">Women's Casual Summer V-Neck Ruffle Sleeve Shirt, Light Green</div>
+        </div>
+      </a>
+      <a href="{{ url_for('Item_page') }}">
+        <div class="product-card">
+          <img src="Main_Product.jpg" alt="Shirt" class="product-image" />
+          <div class="product-name">Women's Casual Summer V-Neck Ruffle Sleeve Shirt, Light Green</div>
+        </div>
+      </a>
+      <a href="{{ url_for('Item_page') }}">
+        <div class="product-card">
+          <img src="Main_Product.jpg" alt="Shirt" class="product-image" />
+          <div class="product-name">Women's Casual Summer V-Neck Ruffle Sleeve Shirt, Light Green</div>
+        </div>
+      </a>
+      <a href="{{ url_for('Item_page') }}">
+        <div class="product-card">
+          <img src="Main_Product.jpg" alt="Shirt" class="product-image" />
+          <div class="product-name">Women's Casual Summer V-Neck Ruffle Sleeve Shirt, Light Green</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</body>
+</html>
