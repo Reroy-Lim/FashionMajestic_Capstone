@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MajestiVision</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6f4f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #e6f2f2;
+      min-height: 80vh;
+      text-align: center;
+    }
+
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: -50px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-with-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100px;
+      margin-right: 12px;
+    }
+
+    .logo-image {
+      width: 100%;
+      height: 100px;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      color: #1a3b5d;
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    .cart-button {
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 1em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .cart-button:hover {
+      background-color: #f0f0f0;
+    }
+
+    .search-container {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .search-bar {
+      flex-grow: 1;
+      padding: 8px 15px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+    }
+
+    .settings-icon {
+      background: white;
+      border: 1px solid #ccc;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .welcome-text {
+      font-size: 1.5em;
+      margin-bottom: 5px;
+    }
+
+    .sub-text {
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 25px;
+      justify-items: center;
+    }
+
+    .product-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+      width: 100%;
+      max-width: 360px;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-name {
+      padding: 12px;
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-content">
+    <div class="header-bar">
+      <div class="logo-container">
+        <div class="logo-with-label">
+          <img src="{{ url_for('static', filename='images/MajestiVision logo.jpeg') }}" alt="MajestiVision_logo" class="logo-image" />
+        </div>
+        <div class="logo-text">MajestiVision</div>
+      </div>
+      <button class="cart-button" onclick="window.location.href='/Settings_Cart'">
+        🛒 Cart
+      </button>
+    </div>
+
+    <!-- Centered "Main Page" Title Above Search -->
+    <h2 style="text-align: center; margin: 10px 0 20px; color: #1a3b5d;margin-bottom: 50px">Main Page</h2>
+
+    <div class="search-container">
+      <input type="text" class="search-bar" placeholder="Search for your type of product here" id="search-input" />
+      <div class="settings-icon" onclick="window.location.href='/Settings_Page'">⚙️</div>
+    </div>
+
+    <div class="welcome-text">Hello :)</div>
+    <div class="sub-text">What are you looking for today?</div>
+
+    <div class="product-grid">
+      <a href="/shop/Topwear/" class="product-card">
+        <img src="/static/images/Top.jpg" alt="Topwear" class="product-image" />
+        <div class="product-name">Topwear</div>
+      </a>
+
+      <a href="/shop/Dress" class="product-card">
+        <img src="/static/images/Dress.jpg" alt="Dress" class="product-image" />
+        <div class="product-name">Dress</div>
+      </a>
+
+      <a href="/shop/Bottomwear" class="product-card">
+        <img src="/static/images/Skirt.jpg" alt="Bottomwear" class="product-image" />
+        <div class="product-name">Bottomwear</div>
+      </a>
+
+      <a href="/shop/Loungewear and Nightwear" class="product-card">
+        <img src="/static/images/LW&NW.jpg" alt="Loungewear and Nightwear" class="product-image" />
+        <div class="product-name">Lounge & Nightwear</div>
+      </a>
+
+      <a href="/shop/Innerwear" class="product-card">
+        <img src="/static/images/Innerwear.jpg" alt="Innerwear" class="product-image" />
+        <div class="product-name">Innerwear</div>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('search-input');
+    const productCards = document.querySelectorAll('.product-card');
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      productCards.forEach(card => {
+        const name = card.querySelector('.product-name').textContent.toLowerCase();
+        card.style.display = name.includes(query) ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

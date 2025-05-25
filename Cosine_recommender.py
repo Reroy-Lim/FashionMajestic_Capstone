@@ -7,7 +7,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 df = pd.read_csv('static/csv_files/data.csv')
 
 # Select relevant features and drop missing values
-features = ['masterCategory', 'subCategory', 'articleType', 'baseColour', 'season', 'usage', 'Size', 'Made In']
+features = ['masterCategory', 'subCategory', 'articleType', 'baseColour', 'season', 'usage', 'Size', 'Made In','gender']
 df = df.dropna(subset=features + ['id', 'productDisplayName'])
 
 # Combine features into a single string for each product

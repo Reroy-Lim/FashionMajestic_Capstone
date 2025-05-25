@@ -125,118 +125,118 @@
 
 <h1>Search Filters</h1>
 
-<form action="/shop/{{ menu_type }}" method="post" style="all: unset !important; ">
+<form action="/shop/{{ menu_type }}" method="POST" style="all: unset !important; ">
 
     <div class="filters-wrapper">
 
       <!-- Type of Clothing -->
-      <div class="filter-section">
+      <!-- <div class="filter-section">
         <strong>Type of Clothing:</strong>
-        <label><input type="checkbox" id="articleType1" name="articleType1" value="shirts"> T-Shirt</label>
-        <label><input type="checkbox" id="articleType2" name="articleType2" value="pants"> Long Pants</label>
-        <label><input type="checkbox" id="articleType3" name="articleType3" value="shorts"> Shorts</label>
-        <label><input type="checkbox" id="articleType4" name="articleType4" value="dresses"> Dress</label>
+        <label><input type="checkbox" id="subCategory1" name="subCategory" value="Topwear"> Topwear</label>
+        <label><input type="checkbox" id="subCategory2" name="subCategory" value="Dress"> Dress</label>
+        <label><input type="checkbox" id="subCategory3" name="subCategory" value="Bottomwear"> Bottomwear</label>
+        <label><input type="checkbox" id="subCategory4" name="subCategory" value="Loungewear and Nightwear"> Lounge & Nightwear</label>
+        <label><input type="checkbox" id="subCategory5" name="subCategory" value="Innerwear"> Innerwear</label>
+        <label><input type="checkbox" id="subCategory6" name="subCategory" value="Saree"> Saree</label>
+        <label><input type="checkbox" id="subCategory7" name="subCategory" value="Apparel Set"> Apparel Set</label>
+        <label><input type="checkbox" id="subCategory8" name="subCategory" value="Socks"> Socks</label>
+      </div> -->
+      <div class="filter-section">
+        <strong>Gender:</strong>
+              <label><input type="checkbox" name="gender" value="Men"> Men</label>
+              <label><input type="checkbox" name="gender" value="Women"> Women</label>
+              <label><input type="checkbox" name="gender" value="Boys"> Boys</label>
+              <label><input type="checkbox" name="gender" value="Girls"> Girls</label>
+              <label><input type="checkbox" name="gender" value="Unisex"> Unisex</label>
       </div>
-
       <!-- Made In -->
       <div class="filter-section">
         <strong>Made in:</strong>
-        <label><input type="checkbox" id="madeIn1" name="madeIn1" value="Singapore"> Singapore</label>
-        <label><input type="checkbox" id="madeIn2" name="madeIn2" value="US"> United States</label>
-        <label><input type="checkbox" id="madeIn3" name="madeIn3" value="UK"> United Kingdom</label>
-        <label><input type="checkbox" id="madeIn4" name="madeIn4" value="Vietnam"> Vietnam</label>
-        <label><input type="checkbox" id="madeIn5" name="madeIn5" value="China"> China</label>
+              <label><input type="checkbox" name="Made In" value="Singapore"> Singapore</label>
+              <label><input type="checkbox" name="Made In" value="USA"> United States</label>
+              <label><input type="checkbox" name="Made In" value="UK"> United Kingdom</label>
+              <label><input type="checkbox" name="Made In" value="Vietnam"> Vietnam</label>
+              <label><input type="checkbox" name="Made In" value="China"> China</label>
       </div>
 
       <!-- Price Range -->
-      <div class="price-range">
-        <strong>Price Range:</strong>
-        <label for="min-price">Min Price:</label>
-        <select id="min-price">
-          <option>$30</option>
-          <option>$50</option>
-          <option>$100</option>
-          <option>$150</option>
-        </select>
+<!-- Price Range -->
+<div class="price-range">
+  <strong>Price Range:</strong>
+  <label for="min-price">Min Price:</label>
+  <select id="min-price" name="min_price">
+    <option value="30">$30</option>
+    <option value="50">$50</option>
+    <option value="100">$100</option>
+    <option value="150">$150</option>
+  </select>
+    <label for="max-price">Max Price:</label>
+      <select id="max-price" name="max_price">
+        <option value="150">$150</option>
+        <option value="200">$200</option>
+        <option value="250">$250</option>
+        <option value="300">$300</option>
+      </select>
+    </div>
 
-        <label for="max-price">Max Price:</label>
-        <select id="max-price">
-          <option>$150</option>
-          <option>$200</option>
-          <option>$250</option>
-          <option>$300</option>
-        </select>
-      </div>
 
       <!-- Ratings -->
-      <div class="filter-section rating-stars">
-        <strong>Ratings:</strong>
-        <label><span class="star">⭐⭐⭐⭐⭐</span><input type="checkbox"></label>
-        <label><span class="star">⭐⭐⭐⭐</span><input type="checkbox"></label>
-        <label><span class="star">⭐⭐⭐</span><input type="checkbox"></label>
-        <label><span class="star">⭐⭐</span><input type="checkbox"></label>
-        <label><span class="star">⭐</span><input type="checkbox"></label>
-      </div>
+    <div class="filter-section">
+      <strong>Ratings:</strong>
+      <label><input type="checkbox" name="rating" value="5"> <span class="star">⭐⭐⭐⭐⭐</span></label>
+      <label><input type="checkbox" name="rating" value="4"> <span class="star">⭐⭐⭐⭐</span></label>
+      <label><input type="checkbox" name="rating" value="3"> <span class="star">⭐⭐⭐</span></label>
+      <label><input type="checkbox" name="rating" value="2"> <span class="star">⭐⭐</span></label>
+      <label><input type="checkbox" name="rating" value="1"> <span class="star">⭐</span></label>
+    </div>
 
       <!-- Color -->
       <div class="filter-section">
         <strong>Color:</strong>
-        <label><input type="checkbox" id="baseColour1" name="baseColour1" value="Beige"> Beige</label>
-        <label><input type="checkbox" id="baseColour2" name="baseColour2" value="Black"> Black</label>
-        <label><input type="checkbox" id="baseColour3" name="baseColour3" value="Blue"> Blue</label>
-        <label><input type="checkbox" id="baseColour4" name="baseColour4" value="Brown"> Brown</label>
-        <label><input type="checkbox" id="baseColour5" name="baseColour5" value="Burgundy"> Burgundy</label>
-        <label><input type="checkbox" id="baseColour6" name="baseColour6" value="Navy Blue"> Navy Blue</label>
-        <label><input type="checkbox" id="baseColour7" name="baseColour7" value="Grey"> Grey</label>
-        <label><input type="checkbox" id="baseColour8" name="baseColour8" value="Green"> Green</label>
-        <label><input type="checkbox" id="baseColour9" name="baseColour9" value="Purple"> Purple</label>
-        <label><input type="checkbox" id="baseColour10" name="baseColour10" value="White"> White</label>
-        <label><input type="checkbox" id="baseColour11" name="baseColour11" value="Charcoal"> Charcoal</label>
-        <label><input type="checkbox" id="baseColour12" name="baseColour12" value="Coffee Brown"> Coffee Brown</label>
-        <label><input type="checkbox" id="baseColour13" name="baseColour13" value="Cream"> Cream</label>
-        <label><input type="checkbox" id="baseColour14" name="baseColour14" value="Fluorescent Green"> Fluorescent Green</label>
-        <label><input type="checkbox" id="baseColour15" name="baseColour15" value="Grey Melange"> Grey Melange</label>
-        <label><input type="checkbox" id="baseColour16" name="baseColour16" value="Khaki"> Khaki</label>
-        <label><input type="checkbox" id="baseColour17" name="baseColour17" value="Lavender"> Lavender</label>
-        <label><input type="checkbox" id="baseColour18" name="baseColour18" value="Lime Green"> Lime Green</label>
-        <label><input type="checkbox" id="baseColour19" name="baseColour19" value="Magenta"> Magenta</label>
-        <label><input type="checkbox" id="baseColour20" name="baseColour20" value="Maroon"> Maroon</label>
-        <label><input type="checkbox" id="baseColour21" name="baseColour21" value="Mauve"> Mauve</label>
-        <label><input type="checkbox" id="baseColour22" name="baseColour22" value="Multi"> Multi</label>
-        <label><input type="checkbox" id="baseColour23" name="baseColour23" value="Yellow"> Yellow</label>
-        <label><input type="checkbox" id="baseColour24" name="baseColour24" value="Turquoise Blue"> Turquoise Blue</label>
-        <label><input type="checkbox" id="baseColour25" name="baseColour25" value="Teal"> Teal</label>
-        <label><input type="checkbox" id="baseColour26" name="baseColour26" value="Taupe"> Taupe</label>
-        <label><input type="checkbox" id="baseColour27" name="baseColour27" value="Tan"> Tan</label>
-        <label><input type="checkbox" id="baseColour28" name="baseColour28" value="Skin"> Skin</label>
-        <label><input type="checkbox" id="baseColour29" name="baseColour29" value="Silver"> Silver</label>
-        <label><input type="checkbox" id="baseColour30" name="baseColour30" value="Sea Green"> Sea Green</label>
-        <label><input type="checkbox" id="baseColour31" name="baseColour31" value="Rust"> Rust</label>
-        <label><input type="checkbox" id="baseColour32" name="baseColour32" value="Rose"> Rose</label>
-        <label><input type="checkbox" id="baseColour33" name="baseColour33" value="Red Purple"> Red Purple</label>
-        <label><input type="checkbox" id="baseColour34" name="baseColour34" value="Pink"> Pink</label>
-        <label><input type="checkbox" id="baseColour35" name="baseColour35" value="Peach"> Peach</label>
-        <label><input type="checkbox" id="baseColour36" name="baseColour36" value="Orange"> Orange</label>
-        <label><input type="checkbox" id="baseColour37" name="baseColour37" value="Off White"> Off White</label>
-        <label><input type="checkbox" id="baseColour38" name="baseColour38" value="Olive"> Olive</label>
-        <label><input type="checkbox" id="baseColour39" name="baseColour39" value="Nude"> Nude</label>
-        <label><input type="checkbox" id="baseColour40" name="baseColour40" value="Mustard"> Mustard</label>
-        <label><input type="checkbox" id="baseColour41" name="baseColour41" value="Mushroom Brown"> Mushroom Brown</label>
+        <label><input type="checkbox" id="baseColour1" name="baseColour" value="Beige"> Beige</label>
+        <label><input type="checkbox" id="baseColour2" name="baseColour" value="Black"> Black</label>
+        <label><input type="checkbox" id="baseColour3" name="baseColour" value="Blue"> Blue</label>
+        <label><input type="checkbox" id="baseColour4" name="baseColour" value="Brown"> Brown</label>
+        <label><input type="checkbox" id="baseColour7" name="baseColour" value="Grey"> Grey</label>
+        <label><input type="checkbox" id="baseColour8" name="baseColour" value="Green"> Green</label>
+        <label><input type="checkbox" id="baseColour9" name="baseColour" value="Purple"> Purple</label>
+        <label><input type="checkbox" id="baseColour10" name="baseColour" value="White"> White</label>
+        <label><input type="checkbox" id="baseColour13" name="baseColour" value="Cream"> Cream</label>
+        <label><input type="checkbox" id="baseColour20" name="baseColour" value="Maroon"> Maroon</label>
+        <label><input type="checkbox" id="baseColour22" name="baseColour" value="Multi"> Multi</label>
+        <label><input type="checkbox" id="baseColour23" name="baseColour" value="Yellow"> Yellow</label>        
+        <label><input type="checkbox" id="baseColour34" name="baseColour" value="Pink"> Pink</label>
+        <label><input type="checkbox" id="baseColour35" name="baseColour" value="Peach"> Peach</label>
+        <label><input type="checkbox" id="baseColour36" name="baseColour" value="Orange"> Orange</label>
+        <label><input type="checkbox" id="baseColour38" name="baseColour" value="Olive"> Olive</label>        
       </div>
 
 
       <!-- Material -->
-      <div class="filter-section">
-        <strong>Material:</strong>
-        <label><input type="checkbox"> Cotton</label>
-        <label><input type="checkbox"> Polyester</label>
-        <label><input type="checkbox"> Nylon</label>
-        <label><input type="checkbox"> Linen</label>
-        <label><input type="checkbox"> Poly-Cotton</label>
-      </div>
+    <div class="filter-section">
+      <strong>Material:</strong>
+      <label><input name="Material" type="checkbox" value="Cotton"> Cotton</label>
+      <label><input name="Material" type="checkbox" value="Polyester"> Polyester</label>
+      <label><input name="Material" type="checkbox" value="Nylon"> Nylon</label>
+      <label><input name="Material" type="checkbox" value="Linen"> Linen</label>
+      <label><input name="Material" type="checkbox" value="Poly-Cotton"> Poly-Cotton</label>
+      <label><input name="Material" type="checkbox" value="Wool"> Wool</label>
+    </div>
+  </div>
     </div>
     <div class="btn-container">
-      <a href="/shop/{{ menu_type }}"><button id="backBtn" type="button">Back to {{ menu_type }}</button></a>
+      <a href="/shop/{{ menu_type if menu_type else 'menu' }}"
+      onclick="event.preventDefault(); 
+                const fallback = '/shop/menu';
+                if (history.length > 1) {
+                  history.back();
+                } else {
+                  window.location.href = fallback;
+                }">
+      <button id="backBtn" type="button">← Back</button>
+    </a>
+
+
       <button id="saveBtn" type="submit">Save</button>
     </div>
 </form>

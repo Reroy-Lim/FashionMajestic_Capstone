@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Complete Your Look - {{ main_prod.productDisplayName }}</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3fbfc;
+      padding: 20px;
+      color: #1a3b5d;
+    }
+    a.back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: #2b5f84;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    a.back-link:hover {
+      text-decoration: underline;
+    }
+    .main-product {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 40px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    .main-product img {
+      max-height: 300px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .main-product-details {
+      max-width: 600px;
+    }
+    .main-product-details h1 {
+      margin-bottom: 10px;
+      color: #2b5f84;
+    }
+    .main-product-details p {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #2b5f84;
+    }
+    .recommendations {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .recommendation-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: 180px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+    .recommendation-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    .card-body {
+      padding: 10px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-body .title {
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .card-body .details {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 8px;
+    }
+    .card-body .price {
+      font-weight: bold;
+      color: #2b5f84;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .card-body button {
+      background: #5d84c4;
+      border: none;
+      color: white;
+      padding: 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .card-body button:hover {
+      background: #3e65a0;
+    }
+    .cart-button {
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 1em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      
+    }
+
+    .cart-button:hover {
+      background-color: #f0f0f0;
+    }
+
+  </style>
+</head>
+<body>
+
+<a href="/menu" class="back-link" aria-label="Back to Menu">← Back to Menu</a>
+
+
+<section class="main-product" aria-label="Main product details" style="position: relative;">
+  <img src="/static/images/{{ main_prod.Image }}" alt="{{ main_prod.productDisplayName }}" />
+  <div class="main-product-details">
+    <h1 style="margin: 0;">{{ main_prod.productDisplayName }}</h1>
+    <p><strong>Category:</strong> {{ main_prod.articleType }}</p>
+    <p><strong>Color:</strong> {{ main_prod.baseColour }}</p>
+    <p><strong>Price:</strong> ${{ '%0.2f'|format(main_prod.price|float) }}</p>
+  </div>
+
+  <!-- Cart Button -->
+  <button class="cart-button" style="position: absolute; top: 20px; right: 20px;" onclick="window.location.href='/Settings_Cart'">🛒 Cart</button>
+</section>
+
+
+
+
+  <h2>Complete Your Look</h2>
+  <section class="recommendations" aria-label="Outfit recommendations list">
+    {% if recommendations is not none and recommendations|length > 0 %}
+      {% for item in recommendations %}
+        <article class="recommendation-card" role="listitem" tabindex="0" aria-label="{{ item.productDisplayName }} recommendation">
+          <img src="/static/images/{{ item.Image }}" alt="{{ item.productDisplayName }}" />
+          <div class="card-body">
+            <div class="title">{{ item.productDisplayName }}</div>
+            <div class="details">{{ item.articleType }} · {{ item.baseColour }}</div>
+            <div class="price">${{ '%0.2f'|format(item.price|float) }}</div>
+            <a href="/viewProduct/{{ item.id }}" class="card-view-button" aria-label="View {{ item.productDisplayName }}">
+  <button type="button">View Product</button>
+</a>
+
+          </div>
+        </article>
+      {% endfor %}
+    {% else %}
+      <p>No recommendations available.</p>
+    {% endif %}
+  </section>
+
+  <script>
+    function addToCart(id, name, image, price) {
+      const cartItem = {
+        id: id,
+        name: name,
+        image: image,
+        price: price,
+        quantity: 1
+      };
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const existingIndex = cart.findIndex(item => item.id === id);
+      if (existingIndex !== -1) {
+        cart[existingIndex].quantity += 1;
+      } else {
+        cart.push(cartItem);
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${name} added to cart!`);
+    }
+  </script>
+
+</body>
+</html>

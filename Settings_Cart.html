@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>View Cart</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #e7f5f6;
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        background-color: #e7f5f6;
+      }
+      .logo-container {
+        display: flex;
+        align-items: center;
+      }
+      .logo {
+        width: 100px;
+        height: 100px;
+        margin-right: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .logo-text {
+        color: #1a3b5d;
+        font-size: 2em;
+        font-weight: bold;
+      }
+      .search-section {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex: 1;
+        max-width: 600px;
+        margin: 0 20px;
+      }
+      .search-input {
+        padding: 8px;
+        width: 100%;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+      }
+      .icons-section {
+        display: flex;
+        gap: 15px;
+      }
+      .icon {
+        font-size: 24px;
+        cursor: pointer;
+      }
+      .title {
+        color: #000;
+        text-align: center;
+        font-size: 36px;
+        margin: 20px 0;
+      }
+      .cart-container {
+        max-width: 1050px;
+        margin: 0 auto;
+      }
+      .cart-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        table-layout: fixed;
+      }
+      .cart-table thead,
+      .cart-table tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+      }
+      .cart-table tbody {
+        display: block;
+        max-height: 400px;
+        overflow-y: auto;
+      }
+      .cart-header {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+      }
+      .cart-header th {
+        padding: 15px;
+        text-align: center;
+        font-weight: bold;
+      }
+      .cart-row {
+        border: 1px solid #ddd;
+        background-color: white;
+      }
+      .cart-row td {
+        padding: 15px;
+        text-align: center;
+        vertical-align: middle;
+      }
+      .product-cell {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        margin-left: -40px;
+      }
+      .product-image {
+        width: 120px;
+        margin-right: 10px;
+      }
+      .product-name {
+        font-weight: bold;
+        margin-bottom: 50px; 
+      }
+      .button-container {
+        display: flex;
+        justify-content: center;
+        max-width: 1050px;
+        margin: 0 auto;
+        gap: 10px;
+      }
+      .btn {
+        background-color: #5d88c1;
+        color: white;
+        padding: 12px 25px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+      }
+      .btn.delete-all {
+        background-color: #d9534f; /* red for delete all */
+      }
+      .btn.delete-all:hover {
+        background-color: #c9302c;
+      }
+      .checkbox {
+        width: 20px;
+        height: 20px;
+      }
+      .product-column {
+        text-align: left;
+      }
+      .empty-cart {
+        text-align: center;
+        padding: 30px;
+        font-size: 18px;
+        background-color: white;
+        border: 1px solid #ddd;
+      }
+      .quantity-control {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .quantity-btn {
+        width: 25px;
+        height: 25px;
+        background: #f0f0f0;
+        border: 1px solid #ddd;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      .quantity-input {
+        width: 40px;
+        height: 25px;
+        text-align: center;
+        border: 1px solid #ddd;
+        margin: 0 5px;
+        margin-left: 5px;
+      }
+      .remove-item {
+        background-color: #d9534f;
+        color: white;
+        cursor: pointer;
+        font-size: 14px;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="logo">
+        <img
+          src="{{ url_for('static', filename='images/MajestiVision logo.jpeg') }}"
+          alt="MajestiVision_logo"
+          style="width: 100%; height: 100%; object-fit: contain;"
+        />
+      </div>
+      <div class="logo-text">MajestiVision</div>
+      <div class="search-section">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search for your product here"
+        />
+      </div>
+      <div class="icons-section">
+        <div class="icon" onclick="window.location.href='/Settings_Page'">⚙️</div>
+      </div>
+    </div>
+
+    <h1 class="title">View Cart</h1>
+
+    <div class="cart-container">
+      <table class="cart-table">
+        <thead class="cart-header">
+          <tr>
+            <th style="width: 5%">
+              <input type="checkbox" class="checkbox" id="selectAll" />
+            </th>
+            <th style="width: 20%" class="product-column">Product</th>
+            <th style="width: 15%">Unit Price</th>
+            <th style="width: 15%">Quantity</th>
+            <th style="width: 10%">Size</th>
+            <th style="width: 15%">Color</th>
+            <th style="width: 15%">Total</th>
+          </tr>
+        </thead>
+        <tbody id="cart-items">
+          <!-- Cart items will be dynamically inserted here -->
+        </tbody>
+      </table>
+      <div
+        style="text-align: right; margin-bottom: 20px; font-size: 18px; font-weight: bold;"
+      >
+        Cart Total: $<span id="cart-total">0.00</span>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button class="btn" onclick="history.back()">Back</button>
+      <button class="btn delete-all" id="delete-all-btn">Remove All</button>
+      <button class="btn" id="checkout-btn" onclick="redirectToCheckout()">Check Out</button>
+      <!-- Added History button -->
+      <button class="btn" onclick="window.location.href='/history'">History</button>
+    </div>
+
+    <script>
+      function redirectToCheckout() {
+        const selectedItems = Array.from(document.querySelectorAll(".item-checkbox:checked")).map(cb => ({
+          id: cb.getAttribute("data-id"),
+          color: cb.getAttribute("data-color"),
+          size: cb.getAttribute("data-size") || '',
+          name: cb.getAttribute("data-name"),
+          price: parseFloat(cb.getAttribute("data-price")),
+          quantity: parseInt(cb.getAttribute("data-quantity")),
+          image: cb.getAttribute("data-image")
+        }));
+
+        if (selectedItems.length === 0) {
+          alert("Please select at least one item to checkout.");
+          return;
+        }
+
+        // Save selected items to localStorage
+        localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
+
+        // Redirect to checkout page
+        window.location.href = "/checkout"; // This should navigate to your checkout page
+      }
+    </script>
+
+    <script>
+      // Load cart from localStorage
+      let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+      function renderCart() {
+        const cartItemsContainer = document.getElementById("cart-items");
+        cartItemsContainer.innerHTML = "";
+
+        if (cartItems.length === 0) {
+          cartItemsContainer.innerHTML = `
+            <tr>
+              <td colspan="7" class="empty-cart">
+                Your cart is empty. Continue shopping!
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        cartItems.forEach((item) => {
+          const totalPrice = (item.price * item.quantity).toFixed(2);
+          const row = document.createElement("tr");
+          row.className = "cart-row";
+          row.innerHTML = `
+            <td>
+              <input type="checkbox" class="checkbox item-checkbox"
+                     data-id="${item.id}"
+                     data-color="${item.color}"
+                     data-size="${item.size || ''}"
+                     data-name="${item.name}"
+                     data-price="${item.price}"
+                     data-quantity="${item.quantity}"
+                     data-image="${item.image}" />
+            </td>
+            <td>
+              <div class="product-cell">
+                <img src="/static/images/${item.image}" alt="${item.name}" class="product-image" />
+                <div>
+                  <span class="product-name">${item.name}</span>
+                  <div>
+                    <button class="remove-item"
+                            data-id="${item.id}"
+                            data-color="${item.color}"
+                            data-size="${item.size || ''}">Remove</button>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td>${item.price.toFixed(2)}</td>
+            <td>
+              <div class="quantity-control">
+                <button class="quantity-btn decrease-qty"
+                        data-id="${item.id}"
+                        data-color="${item.color}"
+                        data-size="${item.size || ''}">-</button>
+                <input type="text" class="quantity-input"
+                       value="${item.quantity}"
+                       data-id="${item.id}"
+                       data-color="${item.color}"
+                       data-size="${item.size || ''}"
+                       min="1" max="99" />
+                <button class="quantity-btn increase-qty"
+                        data-id="${item.id}"
+                        data-color="${item.color}"
+                        data-size="${item.size || ''}">+</button>
+              </div>
+            </td>
+            <td>${item.size || ''}</td>
+            <td>${item.color}</td>
+            <td>${totalPrice}</td>
+          `;
+          cartItemsContainer.appendChild(row);
+        });
+
+        addEventListeners();
+      }
+
+      function updateCartTotal() {
+        const checkedItems = Array.from(document.querySelectorAll(".item-checkbox:checked"));
+        const selectedKeys = checkedItems.map(cb => ({
+          id: cb.getAttribute("data-id"),
+          color: cb.getAttribute("data-color"),
+          size: cb.getAttribute("data-size") || ''
+        }));
+
+        const total = cartItems.reduce((sum, item) => {
+          const found = selectedKeys.find(k => k.id === item.id && k.color === item.color && k.size === (item.size || ''));
+          return found ? sum + item.price * item.quantity : sum;
+        }, 0);
+
+        document.getElementById("cart-total").textContent = total.toFixed(2);
+      }
+
+      function addEventListeners() {
+        document.querySelectorAll(".increase-qty").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const id = this.getAttribute("data-id");
+            const color = this.getAttribute("data-color");
+            const size = this.getAttribute("data-size");
+            const item = cartItems.find(i => i.id === id && i.color === color && (i.size || '') === size);
+            if (item && item.quantity < 99) {
+              item.quantity++;
+              localStorage.setItem("cart", JSON.stringify(cartItems));
+              renderCart();
+              updateCartTotal();
+            }
+          });
+        });
+
+        document.querySelectorAll(".decrease-qty").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const id = this.getAttribute("data-id");
+            const color = this.getAttribute("data-color");
+            const size = this.getAttribute("data-size");
+            const item = cartItems.find(i => i.id === id && i.color === color && (i.size || '') === size);
+            if (item && item.quantity > 1) {
+              item.quantity--;
+              localStorage.setItem("cart", JSON.stringify(cartItems));
+              renderCart();
+              updateCartTotal();
+            }
+          });
+        });
+
+        document.querySelectorAll(".remove-item").forEach((button) => {
+          button.addEventListener("click", function () {
+            const id = this.getAttribute("data-id");
+            const color = this.getAttribute("data-color");
+            const size = this.getAttribute("data-size");
+            if (confirm("Are you sure you want to remove this item from your cart?")) {
+              cartItems = cartItems.filter(i => !(i.id === id && i.color === color && (i.size || '') === size));
+              localStorage.setItem("cart", JSON.stringify(cartItems));
+              renderCart();
+              updateCartTotal();
+            }
+          });
+        });
+
+        document.querySelectorAll(".quantity-input").forEach((input) => {
+          input.addEventListener("change", function () {
+            const id = this.getAttribute("data-id");
+            const color = this.getAttribute("data-color");
+            const size = this.getAttribute("data-size");
+            let qty = parseInt(this.value);
+            if (qty >= 1 && qty <= 99) {
+              const item = cartItems.find(i => i.id === id && i.color === color && (i.size || '') === size);
+              if (item) {
+                item.quantity = qty;
+                localStorage.setItem("cart", JSON.stringify(cartItems));
+                updateCartTotal();
+              }
+            } else {
+              this.value = cartItems.find(i => i.id === id && i.color === color && (i.size || '') === size).quantity;
+            }
+          });
+        });
+
+        document.querySelectorAll(".item-checkbox").forEach((checkbox) => {
+          checkbox.addEventListener("change", function () {
+            updateCartTotal();
+          });
+        });
+      }
+
+      document.getElementById("selectAll").addEventListener("change", function () {
+        const itemCheckboxes = document.querySelectorAll(".item-checkbox");
+        itemCheckboxes.forEach((cb) => (cb.checked = this.checked));
+        updateCartTotal();
+      });
+
+      document.getElementById("checkout-btn").addEventListener("click", function () {
+        const selectedItems = Array.from(document.querySelectorAll(".item-checkbox:checked")).map(cb => ({
+          id: cb.getAttribute("data-id"),
+          color: cb.getAttribute("data-color"),
+          size: cb.getAttribute("data-size") || ''
+        }));
+        if (selectedItems.length === 0) {
+          alert("Please select at least one item to checkout.");
+          return;
+        }
+        console.log("Checking out items:", selectedItems);
+        alert("Proceeding to checkout...");
+      });
+
+      document.getElementById("delete-all-btn").addEventListener("click", function () {
+        if (cartItems.length === 0) {
+          alert("Your cart is already empty.");
+          return;
+        }
+        if (confirm("Are you sure you want to delete all items from your cart?")) {
+          cartItems = [];
+          localStorage.setItem("cart", JSON.stringify(cartItems));
+          renderCart();
+          updateCartTotal();
+        }
+      });
+
+      renderCart();
+      updateCartTotal();
+      document.querySelector('.search-input').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+          event.preventDefault(); // Prevent form submission or default behavior
+          window.location.href = '/menu'; // Redirect to /menu
+        }
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,434 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Size Measurement</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f0e1;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      text-align: center;
+      padding: 0 15px;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      font-family: 'Impact', sans-serif;
+      color: #6b4f1e;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+    th, td {
+      border: 1px solid #6b4f1e;
+      padding: 10px;
+      text-align: left;
+    }
+    tr:nth-child(even) {
+      background-color: #f0e6d0;
+    }
+    select, input {
+      width: 90%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    select:focus, input:focus {
+      outline: none;
+      border-color: #6b4f1e;
+      box-shadow: 0 0 3px #e6a7c2;
+    }
+    .section-header {
+      background-color: #e6a7c2;
+      color: #4d3915;
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      text-align: left;
+    }
+    .results-container {
+      border: 2px solid #e6a7c2;
+      border-radius: 8px;
+      padding: 15px;
+      background-color: #fff;
+    }
+    .results-table td {
+      padding: 12px;
+      text-align: left;
+    }
+    .results-table td:first-child {
+      font-weight: bold;
+      width: 40%;
+    }
+    .size-notes {
+      font-size: 0.9em;
+      color: #666;
+      padding: 10px;
+      background-color: #f9f5e9;
+      border-radius: 4px;
+      text-align: left;
+    }
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    .submit-btn {
+      background-color: #6b4f1e;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1.1em;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background-color: #4d3915;
+    }
+    .gender-selection {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 15px 0;
+    }
+    .gender-selection label {
+      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    #save-message {
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Size Measurement</h1>
+  <form>
+    <div class="section-header">Choose Your Gender</div>
+    <div class="gender-selection">
+      <label><input type="radio" name="gender" value="male" checked> <span>Male</span></label>
+      <label><input type="radio" name="gender" value="female"> <span>Female</span></label>
+    </div>
+
+    <div class="section-header">Height and Weight (in cm and kg)</div>
+    <table>
+    <tr>
+        <td>Height (cm)</td>
+        <td>
+        <input type="number" id="height" name="height" placeholder="e.g., 175.5 cm" step="0.1" min="40" max="250" required>
+        </td>
+    </tr>
+    <tr>
+        <td>Weight (kg)</td>
+        <td>
+        <input type="number" id="weight" name="weight" placeholder="e.g., 68.50 kg" step="0.01" min="20" max="400" required>
+        </td>
+    </tr>
+    </table>
+
+
+    <div class="section-header">Body Measurements (in cm)</div>
+    <table>
+      <tr>
+        <td><label id="chest-label">Chest</label></td>
+        <td>
+          <select name="chest" id="chest-select" required>
+            <option value="">Please Select One</option>
+            <option value="81-91">81 - 91cm (S)</option>
+            <option value="92-97">92 - 97cm (M)</option>
+            <option value="98-103">98 - 103cm (L)</option>
+            <option value="104-110">104 - 110cm (XL)</option>
+            <option value="111-117">111 - 117cm (XXL)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Waist</td>
+        <td>
+          <select name="waist" id="waist-select" required>
+            <option value="">Please Select One</option>
+            <option value="71–76">71 - 76cm (S)</option>
+            <option value="77–82">77 - 82cm (M)</option>
+            <option value="83–88">83 - 88cm (L)</option>
+            <option value="89–95">89 - 95cm (XL)</option>
+            <option value="96-102">96 - 102cm (XXL)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Hips</td>
+        <td>
+          <select name="hips">
+            <option value="">Please Select One</option>
+            <option value="skip">Skip</option>
+            <option value="86–91">86 - 91cm (S)</option>
+            <option value="92–97">92 - 97cm (M)</option>
+            <option value="98–103">98 - 103cm (L)</option>
+            <option value="104–110">104 - 110cm (XL)</option>
+            <option value="111–117">111 - 117cm (XXL)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Inseam</td>
+        <td>
+          <select name="inseam">
+            <option value="">Please Select One</option>
+            <option value="skip">Skip</option>
+            <option value="76–79">76 - 79cm (Short)</option>
+            <option value="80–82">80 - 82cm (Regular)</option>
+            <option value="83–85">83 - 85cm (Long)</option>
+            <option value="86–88">86 and 88cm(Extra Long)</option>
+            <option value="88–90">89 - 92cm (Extra Extra Long)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Sleeve Length</td>
+        <td>
+          <select name="sleeve">
+            <option value="">Please Select One</option>
+            <option value="skip">Skip</option>
+            <option value="81–83">81 - 83cm (Short)</option>
+            <option value="84–86">84 - 86cm (Regular)</option>
+            <option value="87–89">87 - 89cm (Long)</option>
+            <option value="90–92">90 and 92cm (Extra Long)</option>
+            <option value="90–92">93cm and 95 (Extra Extra Long)</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+
+    <div class="button-group">
+      <button type="button" class="submit-btn" onclick="history.back()">Back</button>
+      <button type="button" class="submit-btn" onclick="calculateSize()">Calculate</button>
+      <button type="button" class="submit-btn" onclick="showSavedMessage()">Save Measurements</button>
+    </div>
+    <div id="save-message"></div>
+
+    <div id="results-section" style="display: none;">
+      <div style="display: none; margin-top: 20px;" id="choose-size-btn">
+        <button type="button" class="submit-btn" onclick="redirectToRecommendation()">Choose Size</button>
+      </div>
+
+      <div class="section-header">Your Calculated Size</div>
+      <div class="results-container">
+        <table class="results-table">
+          <tr><td>Result Size:</td><td id="result-size">-</td></tr>
+          <tr><td>Recommended Size:</td><td id="recommended-size">-</td></tr>
+          <tr><td>Fit Size:</td><td id="fit-size">-</td></tr>
+          <tr><td>Loose Size:</td><td id="loose-size">-</td></tr>
+          <tr><td>UK Size Equivalent:</td><td id="uk-size">-</td></tr>
+        </table>
+        <p id="size-status-message" style="font-size: 1.1em; font-weight: bold; margin-top: 10px;"></p>
+        <div class="size-notes">
+          These recommendations are based on your measurements. For best fit, always check the brand's size chart.
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+function calculateSize() {
+  const form = document.querySelector('form');
+  const heightInput = document.querySelector('input[name="height"]');
+  const weightInput = document.querySelector('input[name="weight"]');
+  const height = heightInput.value.trim();
+  const weight = weightInput.value.trim();
+
+  // Enforce 1 decimal place for height
+  if (!/^\d+\.\d$/.test(height)) {
+    alert("Please enter height with exactly 1 decimal place (e.g., 175.5).");
+    heightInput.focus();
+    return;
+  }
+
+  // Enforce 2 decimal places for weight
+  if (!/^\d+\.\d{2}$/.test(weight)) {
+    alert("Please enter weight with exactly 2 decimal places (e.g., 68.50).");
+    weightInput.focus();
+    return;
+  }
+
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  const chest = document.querySelector('select[name="chest"]').value;
+  const waist = document.querySelector('select[name="waist"]').value;
+  const hips = document.querySelector('select[name="hips"]').value;
+  const inseam = document.querySelector('select[name="inseam"]').value;
+  const sleeve = document.querySelector('select[name="sleeve"]').value;
+  const heightVal = parseFloat(height);
+  const weightVal = parseFloat(weight);
+
+
+  function map(val) {
+    if (!val || val === "skip") return null;
+    if (val.includes("81") || val.includes("71") || val.includes("86") || val.includes("76") || val.includes("81")) return "S";
+    if (val.includes("92") || val.includes("77") || val.includes("92") || val.includes("80") || val.includes("84")) return "M";
+    if (val.includes("98") || val.includes("83") || val.includes("98") || val.includes("83") || val.includes("87")) return "L";
+    if (val.includes("104") || val.includes("89") || val.includes("104") || val.includes("86") || val.includes("90")) return "XL";
+    if (val.includes("111") || val.includes("96") || val.includes("88") || val.includes("93") || val.includes("105")) return "XXL";
+    return null;
+  }
+
+  const sizes = [chest, waist, hips, inseam, sleeve].map(map).filter(Boolean);
+
+  const sizeCounts = sizes.reduce((acc, size) => {
+    acc[size] = (acc[size] || 0) + 1;
+    return acc;
+  }, {});
+
+  let resultSize = null;
+  let maxCount = 0;
+  let mostCommonSize = null;
+
+  for (const size in sizeCounts) {
+    if (sizeCounts[size] > maxCount) {
+      maxCount = sizeCounts[size];
+      mostCommonSize = size;
+    }
+  }
+
+  if (maxCount >= 1) resultSize = mostCommonSize;
+
+  const sizeStatus = document.getElementById("size-status-message");
+  const shiftSize = (s, n) => {
+    const order = ["S", "M", "L", "XL","XXL"];
+    const i = order.indexOf(s);
+    return i !== -1 ? order[Math.max(0, Math.min(order.length - 1, i + n))] : s;
+  };
+
+  document.getElementById("result-size").textContent = resultSize || "Not in range";
+  document.getElementById("recommended-size").textContent = resultSize || "Unavailable";
+  document.getElementById("fit-size").textContent = resultSize ? shiftSize(resultSize, -1) : "-";
+  document.getElementById("loose-size").textContent = resultSize ? shiftSize(resultSize, 1) : "-";
+  document.getElementById("uk-size").textContent =
+    resultSize === "S" ? "UK 32-36" :
+    resultSize === "M" ? "UK 38-40" :
+    resultSize === "L" ? "UK 42-44" :
+    resultSize === "XL" ? "UK 46-48" :
+    resultSize === "XXL" ? "UK 50-52" : "-"; "-";
+
+  sizeStatus.textContent = resultSize
+    ? "✅ Size found. Please review the recommendations below."
+    : "⚠️ Your measurements are inconsistent or out of range. No reliable size match found.";
+  sizeStatus.style.color = resultSize ? "green" : "crimson";
+
+  document.getElementById("results-section").style.display = "block";
+  document.getElementById("choose-size-btn").style.display = resultSize ? "block" : "none";
+  document.getElementById("results-section").scrollIntoView({ behavior: "smooth" });
+}
+
+function getQueryParam(param) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(param);
+}
+
+function redirectToRecommendation() {
+  const recommended = document.getElementById("recommended-size").textContent;
+  const gender = document.querySelector('input[name="gender"]:checked')?.value || "male";
+
+  // Grab all product info from current URL
+  const id = getQueryParam('id');
+  const name = getQueryParam('name');
+  const price = getQueryParam('price');
+  const image = getQueryParam('image');
+
+  if (recommended && recommended !== "-") {
+    // Build URL with all info, encodeURIComponent to be safe
+    const url = `/based_recommendation_screen?` +
+      `id=${encodeURIComponent(id)}` +
+      `&name=${encodeURIComponent(name)}` +
+      `&price=${encodeURIComponent(price)}` +
+      `&image=${encodeURIComponent(image)}` +
+      `&recommended=${encodeURIComponent(recommended)}` +
+      `&gender=${encodeURIComponent(gender)}`;
+
+    window.location.href = url;
+  } else {
+    alert("Please calculate size first.");
+  }
+}
+
+
+
+function showSavedMessage() {
+  const data = {
+    gender: document.querySelector('input[name="gender"]:checked')?.value,
+    height: document.querySelector('input[name="height"]').value,
+    weight: document.querySelector('input[name="weight"]').value,
+    chest: document.querySelector('select[name="chest"]').value,
+    waist: document.querySelector('select[name="waist"]').value,
+    hips: document.querySelector('select[name="hips"]').value,
+    inseam: document.querySelector('select[name="inseam"]').value,
+    sleeve: document.querySelector('select[name="sleeve"]').value
+  };
+  localStorage.setItem('savedMeasurements', JSON.stringify(data));
+  const messageBox = document.getElementById("save-message");
+  messageBox.textContent = "Measurements Saved!";
+  setTimeout(() => { messageBox.textContent = ""; }, 3000);
+}
+
+window.onload = function () {
+  const saved = localStorage.getItem('savedMeasurements');
+  if (!saved) return;
+  const data = JSON.parse(saved);
+  if (data.gender) document.querySelector(`input[name="gender"][value="${data.gender}"]`).checked = true;
+  if (data.height) document.querySelector('input[name="height"]').value = data.height;
+  if (data.weight) document.querySelector('input[name="weight"]').value = data.weight;
+  if (data.chest) document.querySelector('select[name="chest"]').value = data.chest;
+  if (data.waist) document.querySelector('select[name="waist"]').value = data.waist;
+  if (data.hips) document.querySelector('select[name="hips"]').value = data.hips;
+  if (data.inseam) document.querySelector('select[name="inseam"]').value = data.inseam;
+  if (data.sleeve) document.querySelector('select[name="sleeve"]').value = data.sleeve;
+};
+
+function updateChestLabel() {
+  const gender = document.querySelector('input[name="gender"]:checked')?.value;
+  const label = document.getElementById('chest-label');
+  if (label) label.textContent = gender === 'female' ? 'Bust' : 'Chest';
+}
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('input[name="gender"]').forEach(radio => {
+    radio.addEventListener('change', updateChestLabel);
+  });
+  updateChestLabel();
+});
+document.getElementById("height").addEventListener("input", function (e) {
+  const value = e.target.value;
+  if (!/^\d+(\.\d?)?$/.test(value)) {
+    e.target.value = value.slice(0, -1);
+  }
+});
+
+document.getElementById("weight").addEventListener("input", function (e) {
+  const value = e.target.value;
+  if (!/^\d+(\.\d{0,2})?$/.test(value)) {
+    e.target.value = value.slice(0, -1);
+  }
+});
+</script>
+
+</body>
+</html>

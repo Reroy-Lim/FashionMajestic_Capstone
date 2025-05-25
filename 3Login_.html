@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MajestiVision Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f5f0;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .logo {
+      width: 40%;
+      text-align: center;
+    }
+
+    .logo img {
+      width: 80%;
+    }
+
+    .form-container {
+      width: 40%;
+      background-color: #f9f5f0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #5a4012;
+      font-size: 24px;
+      text-decoration: underline;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      color: #5a4012;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 35px 10px 10px;
+      border: 1px solid #5a4012;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 34px;
+      width: 20px;
+      height: 20px;
+      background: url('https://www.svgrepo.com/show/532400/eye.svg') no-repeat center;
+      background-size: contain;
+      cursor: pointer;
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 10px;
+      background-color: #add8e6;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-login:hover {
+      background-color: #9ac7e0;
+    }
+
+    .google-btn {
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .google-btn img {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+
+    .or-text {
+      text-align: center;
+      margin: 10px 0;
+      font-weight: bold;
+      color: #5a4012;
+    }
+
+    .form-container a {
+      color: #5a4012;
+      text-decoration: none;
+      font-size: 12px;
+      text-align: center;
+      display: block;
+      margin-top: 15px;
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/MajestiVision logo.jpeg') }}" alt="MajestiVision_logo">
+    </div>
+    <div class="form-container">
+      <h2>Login to your account</h2>
+      <form onsubmit="return handleLogin(event)">
+        <div class="form-group">
+          <label for="login-email">Email:</label>
+          <input type="email" id="login-email" name="login-email" placeholder="Enter your email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="login-password">Password:</label>
+          <input type="password" id="login-password" name="login-password" placeholder="Enter your password" required />
+          <span class="toggle-password" onclick="togglePassword(this, 'login-password')"></span>
+        </div>
+
+        <div class="error" id="login-error-msg"></div>
+
+        <button type="submit" class="btn-login">Login</button>
+
+        <div class="or-text">OR</div>
+
+        <a href="{{ url_for('login_google') }}" class="google-btn">
+          <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" />
+          Login with Google
+        </a>
+
+        <a href="{{ url_for('sign_up') }}" class="button login-button">Don't have an account? Sign Up</a>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function togglePassword(icon, fieldId) {
+      const input = document.getElementById(fieldId);
+      const isText = input.type === "text";
+      input.type = isText ? "password" : "text";
+      icon.style.backgroundImage = isText
+        ? "url('https://www.svgrepo.com/show/532400/eye.svg')"
+        : "url('https://www.svgrepo.com/show/532401/eye-off.svg')";
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+
+      const emailInput = document.getElementById("login-email").value.trim();
+      const passwordInput = document.getElementById("login-password").value;
+      const errorMsg = document.getElementById("login-error-msg");
+
+      const storedUser = JSON.parse(localStorage.getItem("majestiUser"));
+
+      if (!storedUser) {
+        errorMsg.textContent = "⚠️ No user found. Please sign up first.";
+        return false;
+      }
+
+      if (storedUser.email === emailInput && storedUser.password === passwordInput) {
+        alert("✅ Login successful!");
+        window.location.href = "{{ url_for('menu') }}";
+        return true;
+      } else {
+        errorMsg.textContent = "⚠️ Invalid email or password.";
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>

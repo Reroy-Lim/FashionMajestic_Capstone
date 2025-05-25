@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MajestiVision</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f6eada;
+    }
+
+    .content {
+      background-color: #e8f9f9;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .welcome-text {
+      font-size: 42px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 300px;
+      height: auto;
+      margin-bottom: 30px;
+    }
+
+    .logo img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .buttons-container {
+      display: flex;
+      gap: 20px;
+    }
+
+    .button {
+      border: none;
+      border-radius: 25px;
+      padding: 10px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      text-transform: uppercase;
+      color: white;
+    }
+
+    .login-button {
+      background-color: #2ecc71;
+    }
+
+    .signup-button {
+      background-color: #9b59b6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <div class="welcome-text">WELCOME TO</div>
+
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/MajestiVision logo.jpeg') }}" alt="MajestiVision_logo">
+    </div>
+
+    <div class="buttons-container">
+      <a href="{{ url_for('login') }}" class="button login-button">LOGIN</a>
+      <a href="{{ url_for('sign_up') }}" class="button signup-button">Sign up</a>
+    </div>
+  </div>
+
+</body>  
+</html>

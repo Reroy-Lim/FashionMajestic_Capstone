@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Size Selector with Recommendation Toggle</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      position: relative;
+    }
+    .overlay-bar {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 9999;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .overlay-bar h2 {
+      margin: 0 0 10px;
+      font-size: 28px;
+    }
+    .overlay-bar h3 {
+      margin: 0 0 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .sizes {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .size-box {
+      background-color: #eaf6f7;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s, border 0.3s;
+      border: 2px solid transparent;
+    }
+    .size-box.active {
+      background-color: #6fb8c6;
+      color: white;
+    }
+    .size-box.recommended {
+      border: 4px solid #ff2600;
+    }
+    .size-chart-link {
+      color: #2f4a7f;
+      font-weight: bold;
+      text-decoration: underline;
+      cursor: pointer;
+      display: inline-block;
+      margin: 0;
+      margin-right: 20px;
+      user-select: none;
+    }
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .overlay-button, .add-to-cart, .back-button {
+      padding: 10px 30px;
+      font-size: 16px;
+      background-color: #f0f7f7;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      color: #444;
+    }
+    .colors {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      user-select: none;
+    }
+    .colors span {
+      font-weight: bold;
+      user-select: none;
+    }
+    .color-circle {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      cursor: pointer;
+      transition: border 0.3s ease, transform 0.2s ease;
+      outline-offset: 2px;
+    }
+    .color-circle.selected {
+      border: 4px solid #66b3ff;
+      box-shadow: 0 0 6px #66b3ff;
+      transform: scale(1.1);
+    }
+    .main-content {
+      padding: 20px;
+      padding-top: 280px;
+      z-index: 1;
+      position: relative;
+    }
+    #sizeChartModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+    }
+    #sizeChartModal .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 700px;
+      width: 95%;
+      position: relative;
+      overflow-x: auto;
+    }
+    #sizeChartModal table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+    }
+    #sizeChartModal th, #sizeChartModal td {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+    #sizeChartModal th {
+      background-color: #f0f0f0;
+    }
+    #sizeChartModal .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .highlight-row {
+      background-color: #d9efff;
+      font-weight: bold;
+    }
+    #cart-toast {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      display: none;
+      z-index: 10001;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    /* Floating Cart Button */
+    #floating-cart-btn {
+      position: fixed;
+      bottom: 400px;
+      right: 30px;
+      background-color: white; /* Changed to white */
+      color: #3e65a0; /* Use brand color for text */
+      border: 2px solid #3e65a0; /* Add a colored border */
+      border-radius: 50px;
+      padding: 15px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      z-index: 11000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      user-select: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    #floating-cart-btn:hover {
+      background-color: #3e65a0;
+      color: white;
+      border-color: #3e65a0;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="main-content">
+  <h1>Welcome to MajestiVision</h1>
+  <p>This is your website content that remains visible behind the white overlay bar.</p>
+</div>
+
+<div class="overlay-bar">
+  <h2>Based on your measurements</h2>
+  <h3 id="recommendation-text">We recommend Size -</h3>
+
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 20px;">
+    <a class="size-chart-link" tabindex="0" role="button" aria-label="View Size Chart">View Size Chart</a>
+    
+    <div class="colors" aria-label="Select product color" role="group" tabindex="-1">
+      <span>Color:</span>
+      <div class="color-circle"
+          data-color="{{ main_prod.baseColour | lower }}"
+          style="background-color: {{ main_prod.baseColour | lower }};"
+          tabindex="0"
+          role="button"
+          aria-pressed="false"
+          onclick="selectColor(this)"
+          onkeypress="if(event.key==='Enter' || event.key===' ') selectColor(this)">
+      </div>
+    </div>
+  </div>
+
+  <div class="sizes">
+    <div class="size-box" onclick="selectSize(this)">S: 86–91</div>
+    <div class="size-box" onclick="selectSize(this)">M: 92–97</div>
+    <div class="size-box" onclick="selectSize(this)">L: 98–103</div>
+    <div class="size-box" onclick="selectSize(this)">XL: 104–110</div>
+    <div class="size-box" onclick="selectSize(this)">XXL: 111–117</div>
+  </div>
+
+  <div class="button-row">
+    <button class="back-button" onclick="history.back()">Back</button>
+    <button class="overlay-button" id="toggleBtn" onclick="toggleRecommendation()">Show Recommended Size</button>
+    <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+  </div>
+</div>
+
+<!-- Floating Cart Button -->
+<button id="floating-cart-btn" onclick="window.location.href='/Settings_Cart'" aria-label="Go to cart">
+  🛒 Cart
+</button>
+
+<div id="sizeChartModal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeSizeChart()" role="button" tabindex="0" aria-label="Close size chart">&times;</span>
+    <h2 id="chart-title">Size Chart</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Size</th>
+          <th>Bust/Chest (cm)</th>
+          <th>Waist (cm)</th>
+          <th>Hips (cm)</th>
+          <th>Inseam (cm)</th>
+          <th>Sleeve Length (cm)</th>
+        </tr>
+      </thead>
+      <tbody id="sizeChartBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div id="cart-toast" role="alert" aria-live="assertive" aria-atomic="true">Item added to cart!</div>
+
+<script>
+  let selectedColor = null;
+  let selectedSize = null;
+
+  function selectColor(element) {
+    document.querySelectorAll('.color-circle').forEach(c => {
+      c.classList.remove('selected');
+      c.setAttribute('aria-pressed', 'false');
+    });
+    element.classList.add('selected');
+    element.setAttribute('aria-pressed', 'true');
+    selectedColor = element.getAttribute('data-color');
+  }
+
+  function selectSize(element) {
+    document.querySelectorAll('.size-box').forEach(box => box.classList.remove('active'));
+    element.classList.add('active');
+    selectedSize = element.innerText.split(':')[0];
+  }
+
+  let recommendedSize = null;
+  let recommendedVisible = true;
+
+  let productId = null;
+  let productName = null;
+  let productPrice = null;
+  let productImage = null;
+
+  function toggleRecommendation() {
+    recommendedVisible = !recommendedVisible;
+    document.querySelectorAll('.size-box').forEach(box => {
+      if (box.innerText.startsWith(recommendedSize + ":")) {
+        box.classList.toggle('recommended', recommendedVisible);
+      }
+    });
+    document.querySelectorAll('#sizeChartBody tr').forEach(row => {
+      if (row.cells[0].innerText === recommendedSize) {
+        row.classList.toggle('highlight-row', recommendedVisible);
+      }
+    });
+    document.getElementById('toggleBtn').innerText = recommendedVisible ? "Hide Recommended Size" : "Show Recommended Size";
+  }
+
+  function closeSizeChart() {
+    document.getElementById("sizeChartModal").style.display = "none";
+  }
+
+  document.querySelector(".size-chart-link").onclick = function () {
+    document.getElementById("sizeChartModal").style.display = "flex";
+  };
+
+  window.onload = () => {
+    const params = new URLSearchParams(window.location.search);
+    productId = params.get("id");
+    productName = params.get("name");
+    productPrice = parseFloat(params.get("price"));
+    productImage = params.get("image");
+
+    const gender = params.get("gender") || "male";
+    recommendedSize = params.get("recommended") || "";
+
+    const sizeChartBody = document.getElementById("sizeChartBody");
+    const maleChart = `
+      <tr><td>S</td><td>86–91</td><td>71–76</td><td>86–91</td><td>76–79</td><td>81–83</td></tr>
+      <tr><td>M</td><td>92–97</td><td>77–82</td><td>92–97</td><td>80–82</td><td>84–86</td></tr>
+      <tr><td>L</td><td>98–103</td><td>83–88</td><td>98–103</td><td>83–85</td><td>87–89</td></tr>
+      <tr><td>XL</td><td>104–110</td><td>89–95</td><td>104–110</td><td>86–88</td><td>90–92</td></tr>
+      <tr><td>XXL</td><td>111–117</td><td>96–102</td><td>111–117</td><td>88–90</td><td>93–95</td></tr>
+    `;
+
+    const femaleChart = `
+      <tr><td>S</td><td>80–85</td><td>60–65</td><td>86–91</td><td>74–76</td><td>74–76</td></tr>
+      <tr><td>M</td><td>86–91</td><td>66–71</td><td>92–97</td><td>77–79</td><td>77–79</td></tr>
+      <tr><td>L</td><td>92–97</td><td>72–77</td><td>98–103</td><td>80–82</td><td>80–82</td></tr>
+      <tr><td>XL</td><td>98–104</td><td>78–85</td><td>104–110</td><td>83–85</td><td>83–85</td></tr>
+      <tr><td>XXL</td><td>105–112</td><td>86–93</td><td>111–117</td><td>86–88</td><td>86–88</td></tr>
+    `;
+
+    sizeChartBody.innerHTML = gender === "female" ? femaleChart : maleChart;
+
+    document.getElementById("recommendation-text").innerText = `We recommend Size ${recommendedSize}`;
+
+    document.querySelectorAll('#sizeChartBody tr').forEach(row => {
+      if (row.cells[0].innerText === recommendedSize) {
+        row.classList.add('highlight-row');
+      }
+    });
+    document.querySelectorAll('.size-box').forEach(box => {
+      if (box.innerText.startsWith(recommendedSize + ":")) {
+        box.classList.add("active", "recommended");
+      }
+    });
+    document.getElementById("toggleBtn").innerText = "Hide Recommended Size";
+    document.getElementById("chart-title").innerText =
+      gender === "female" ? "Female Size Chart" : "Male Size Chart";
+  };
+
+  function addToCart() {
+    const activeBox = document.querySelector('.size-box.active');
+    if (!activeBox) {
+      alert("Please select a size before adding to cart.");
+      return;
+    }
+
+    const selectedSize = activeBox.innerText.split(':')[0];
+    const selectedColorFinal = selectedColor || "default";
+
+    const newItem = {
+      id: productId,
+      name: productName,
+      price: productPrice,
+      color: selectedColorFinal,
+      size: selectedSize,
+      quantity: 1,
+      image: productImage
+    };
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const existingIndex = cart.findIndex(item =>
+      item.id === newItem.id &&
+      item.color === newItem.color &&
+      item.size === newItem.size
+    );
+
+    if (existingIndex !== -1) {
+      cart[existingIndex].quantity += 1;
+    } else {
+      cart.push(newItem);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    const toast = document.getElementById("cart-toast");
+    toast.innerText = `Added to cart: Size ${selectedSize}`;
+    toast.style.display = "block";
+    setTimeout(() => {
+      toast.style.display = "none";
+    }, 2500);
+  }
+</script>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>MajestiVision Product Page</title>
   <style>
     * {
@@ -27,13 +27,21 @@
       border-bottom: 1px solid #ccc;
     }
     .logo {
-      height: 50px;
+      width: 100px;
+      height: auto;
       margin-right: 10px;
+      object-fit: contain;
     }
     .brand {
       font-size: 28px;
       font-weight: bold;
       color: #2b5f84;
+      user-select: none;
+    }
+    .header-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
     }
     .search-bar {
       margin-left: 20px;
@@ -77,7 +85,6 @@
       font-weight: bold;
       margin: 20px 0;
     }
-
     .colors {
       display: flex;
       align-items: center;
@@ -88,11 +95,11 @@
       width: 45px;
       height: 45px;
       border-radius: 50%;
-      border: 2px solid #ccc; /* Default grey outline */
+      border: 2px solid #ccc;
       cursor: pointer;
       transition: border 0.3s ease, transform 0.2s ease;
+      outline-offset: 2px;
     }
-
     .color-circle.selected {
       border: 4px solid #66b3ff;
       box-shadow: 0 0 6px #66b3ff;
@@ -101,6 +108,38 @@
     .size-link {
       margin-left: 10px;
       font-size: 16px;
+      text-decoration: underline;
+      color: #2b5f84;
+      cursor: pointer;
+      user-select: none;
+    }
+    .size-options {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .size-options label {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .size-button {
+      padding: 10px 18px;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+      background-color: white;
+      font-weight: bold;
+      transition: all 0.2s ease-in-out;
+      user-select: none;
+    }
+    .size-button:hover {
+      border-color: #66b3ff;
+    }
+    .size-button.selected {
+      border-color: #66b3ff;
+      background-color: #eaf6ff;
+      box-shadow: 0 0 6px #66b3ff;
     }
     .button-group {
       display: flex;
@@ -113,15 +152,12 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      user-select: none;
     }
     .add-to-cart {
       background-color: #e3f0f1;
       color: #333;
     }
-    .color-circle.light-border {
-    border: 2px solid #000 !important;
-    }
-
     .add-to-cart:hover {
       background-color: #cfe4e6;
     }
@@ -139,64 +175,6 @@
       font-size: 20px;
       margin-bottom: 15px;
     }
-    .suggestion-row {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .suggestion-card {
-      background: white;
-      border-radius: 8px;
-      padding: 10px;
-      width: 220px;
-      text-align: center;
-      box-shadow: 0 0 8px rgba(0,0,0,0.05);
-    }
-    .suggestion-card img {
-      width: 100%;
-      border-radius: 4px;
-    }
-    .suggestion-card .price {
-      font-weight: bold;
-      font-size: 16px;
-      margin-top: 8px;
-    }
-    .suggestion-card .stars {
-      color: #f4c150;
-      font-size: 14px;
-    }
-    .suggestion-card .title {
-      font-size: 14px;
-      margin-top: 5px;
-    }
-    .size-options {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-    }
-    .size-options label {
-      font-size: 16px;
-      font-weight: bold;
-    }
-    .size-button {
-      padding: 10px 18px;
-      border: 2px solid #ccc;
-      border-radius: 6px;
-      cursor: pointer;
-      background-color: white;
-      font-weight: bold;
-      transition: all 0.2s ease-in-out;
-    }
-    .size-button:hover {
-      border-color: #66b3ff;
-    }
-    .size-button.selected {
-      border-color: #66b3ff;
-      background-color: #eaf6ff;
-      box-shadow: 0 0 6px #66b3ff;
-    }
-
     .recommendations {
       display: flex;
       flex-wrap: wrap;
@@ -210,15 +188,11 @@
       width: 200px;
       overflow: hidden;
       transition: transform 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
     }
-
-    .recommendation-card a {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        text-decoration: none;
-    }
-
     .recommendation-card:hover {
       transform: translateY(-5px);
     }
@@ -226,10 +200,12 @@
       width: 100%;
       height: 220px;
       object-fit: cover;
+      flex-shrink: 0;
     }
     .recommendation-card .card-body {
       padding: 10px;
       text-align: left;
+      flex-grow: 1;
     }
     .recommendation-card .title {
       font-size: 14px;
@@ -247,32 +223,39 @@
       font-weight: bold;
       color: #2b5f84;
     }
+    .page-title {
+    text-align: center;
+    margin: 60px 0 20px;
+    color: #1a3b5d;
+    }
+
+    
   </style>
-
-
-
 </head>
 <body>
 
   <div class="header">
-    <a href="/shop/{{ menu_type }}"><img src="/static/images/MajestiVision logo.jpeg" alt="Logo" class="logo"></a>
-    <div class="brand">MajestiVision</div>
+    <a href="/menu" class="header-link" aria-label="Go to MajestiVision menu">
+      <img src="{{ url_for('static', filename='images/MajestiVision logo.jpeg') }}" alt="MajestiVision Logo" class="logo" />
+      <div class="brand">MajestiVision</div>
+    </a>
     <div class="search-bar">
-      <input type="text" placeholder="Search for your product here">
+      <input type="text" placeholder="Search for your product here" aria-label="Search products" />
     </div>
   </div>
 
   <div class="scrollable-content">
+        <h2 class="page-title">Product Page</h2>
     <div class="product-container">
       <img src="/static/images/{{ main_prod.Image }}"
-           alt="{ main_prod.productDisplayName }}" class="product-image"
-           onerror="this.src='{{ url_for('static', filename='images/default.jpg') }}';">
+           alt="{{ main_prod.productDisplayName }}" class="product-image"
+           onerror="this.src='{{ url_for('static', filename='images/default.jpg') }}';" />
 
       <div class="product-details">
         <h2>{{ main_prod.productDisplayName }}</h2>
         <p>{{ main_prod.articleType }} - For {{ main_prod.usage if main_prod.usage else 'Everyday Wear' }}</p>
         {% set rating = main_prod.rating %}
-        <div class="rating">
+        <div class="rating" aria-label="Product rating">
           Rating:
           {% for i in range(1, 6) %}
             {% if rating >= i %}
@@ -286,49 +269,67 @@
           &nbsp; {{ rating if rating else 'No Ratings Yet' }}
         </div>
 
-        <div class="price">$ {{'%0.2f'|format(main_prod.price|float)}}</div>
-
-        <div class="colors">
+        <div class="price">$ {{ '%0.2f'|format(main_prod.price|float) }}</div>
+        <div class="product-meta" style="margin-top: 10px; font-size: 15px; color: #444;">
+          <p><strong>Material:</strong> {{ main_prod.Material or 'N/A' }}</p>
+          <p><strong>Season:</strong> {{ main_prod.season or 'N/A' }}</p>
+          <p><strong>Made In:</strong> {{ main_prod["Made In"] or 'N/A' }}</p>
+        </div>
+        <div class="colors" aria-label="Select product color">
           <span>Color:</span>
           <div class="color-circle"
-              data-color="{{ main_prod.baseColour | lower }}"
-              style="background-color: {{ main_prod.baseColour | lower }};"
-              onclick="selectColor(this)">
-            </div>
+               data-color="{{ main_prod.baseColour | lower }}"
+               style="background-color: {{ main_prod.baseColour | lower }};"
+               tabindex="0"
+               role="button"
+               aria-pressed="false"
+               onclick="selectColor(this)"
+               onkeypress="if(event.key==='Enter' || event.key===' ') selectColor(this)">
+          </div>
 
-          <a href="#" class="size-link">Size Chart</a>
+          <a 
+  href="{{ url_for('Input_measurement') }}?id={{ main_prod.id | urlencode }}&name={{ main_prod.productDisplayName | urlencode }}&price={{ main_prod.price | urlencode }}&image={{ main_prod.Image | urlencode }}&recommended={{ main_prod.recommendedSize | urlencode }}&gender={{ main_prod.gender | urlencode }}" 
+  class="size-link" tabindex="0"
+>
+  Size Chart
+</a>
+
+
+
         </div>
 
-        <div class="size-options">
+        <div class="size-options" aria-label="Select product size">
           <label>Sizes:</label>
-          <button class="size-button" data-size="S" onclick="selectSize(this)">S</button>
-          <button class="size-button" data-size="M" onclick="selectSize(this)">M</button>
-          <button class="size-button" data-size="L" onclick="selectSize(this)">L</button>
-          <button class="size-button" data-size="XL" onclick="selectSize(this)">XL</button>
+          <button class="size-button" data-size="S" onclick="selectSize(this)" aria-pressed="false" tabindex="0">S</button>
+          <button class="size-button" data-size="M" onclick="selectSize(this)" aria-pressed="false" tabindex="0">M</button>
+          <button class="size-button" data-size="L" onclick="selectSize(this)" aria-pressed="false" tabindex="0">L</button>
+          <button class="size-button" data-size="XL" onclick="selectSize(this)" aria-pressed="false" tabindex="0">XL</button>
+          <button class="size-button" data-size="XXL" onclick="selectSize(this)" aria-pressed="false" tabindex="0">XXL</button>
         </div>
 
         <div class="button-group">
-          <button class="back-button" onclick="history.back()">Back</button>
-          <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+          <button class="back-button" onclick="history.back()" type="button">Back</button>
+          <button class="add-to-cart" onclick="addToCart()" type="button">Add to Cart</button>
         </div>
       </div>
     </div>
 
     <div class="suggestions">
       <h3>You May Also Like</h3>
-        <div class="recommendations">
-          {% for prod in range(n) %}
-            <a href="/viewProduct/{{ rec_prods.iloc[prod].name }}" class="recommendation-card" style="text-decoration: none;">
-              <img src="/static/images/{{ rec_prods.iloc[prod].Image }}" alt="{{ rec_prods.iloc[prod].articleType }}">
-              <div class="card-body">
-                <div class="title">{{ rec_prods.iloc[prod].productDisplayName }}, {{ rec_prods.iloc[prod].baseColour }}</div>
-                <div class="details">{{ rec_prods.iloc[prod].articleType }} · {{ rec_prods.iloc[prod].baseColour }}</div>
-                <div class="price">$ {{'%0.2f'|format(rec_prods.iloc[prod].price|float)}}</div>
-              </div>
-            </a>
+      <div class="recommendations">
+        {% for prod in range(n) %}
+          <a href="/viewProduct/{{ rec_prods.iloc[prod].name }}" class="recommendation-card" tabindex="0" style="text-decoration:none;">
+            <img src="/static/images/{{ rec_prods.iloc[prod].Image }}" alt="{{ rec_prods.iloc[prod].articleType }}" />
+            <div class="card-body">
+              <div class="title">{{ rec_prods.iloc[prod].productDisplayName }}, {{ rec_prods.iloc[prod].baseColour }}</div>
+              <div class="details">{{ rec_prods.iloc[prod].articleType }} · {{ rec_prods.iloc[prod].baseColour }}</div>
+              <div class="price">$ {{ '%0.2f'|format(rec_prods.iloc[prod].price|float) }}</div>
 
-          {% endfor %}
-        </div>
+              
+            </div>
+          </a>
+        {% endfor %}
+      </div>
     </div>
   </div>
 
@@ -337,14 +338,22 @@
     let selectedSize = null;
 
     function selectColor(element) {
-      document.querySelectorAll('.color-circle').forEach(c => c.classList.remove('selected'));
+      document.querySelectorAll('.color-circle').forEach(c => {
+        c.classList.remove('selected');
+        c.setAttribute('aria-pressed', 'false');
+      });
       element.classList.add('selected');
+      element.setAttribute('aria-pressed', 'true');
       selectedColor = element.getAttribute('data-color');
     }
 
     function selectSize(button) {
-      document.querySelectorAll('.size-button').forEach(b => b.classList.remove('selected'));
+      document.querySelectorAll('.size-button').forEach(b => {
+        b.classList.remove('selected');
+        b.setAttribute('aria-pressed', 'false');
+      });
       button.classList.add('selected');
+      button.setAttribute('aria-pressed', 'true');
       selectedSize = button.getAttribute('data-size');
     }
 
@@ -353,65 +362,96 @@
         alert("Please select both color and size.");
         return;
       }
-      localStorage.setItem('selectedColor', selectedColor);
-      localStorage.setItem('selectedSize', selectedSize);
-      alert(`Added to cart with Color: ${selectedColor}, Size: ${selectedSize}`);
-    }
-  </script>
-  <script>
-  let selectedColor = null;
-  let selectedSize = null;
-
-  function selectColor(element) {
-    document.querySelectorAll('.color-circle').forEach(c => c.classList.remove('selected'));
-    element.classList.add('selected');
-    selectedColor = element.getAttribute('data-color');
-  }
-
-  function selectSize(button) {
-    document.querySelectorAll('.size-button').forEach(b => b.classList.remove('selected'));
-    button.classList.add('selected');
-    selectedSize = button.getAttribute('data-size');
-  }
-
-  function addToCart() {
-    if (!selectedColor || !selectedSize) {
-      alert("Please select both color and size.");
-      return;
-    }
-    localStorage.setItem('selectedColor', selectedColor);
-    localStorage.setItem('selectedSize', selectedSize);
-    alert(`Added to cart with Color: ${selectedColor}, Size: ${selectedSize}`);
-  }
-
-  function hexToRgb(hex) {
-    const ctx = document.createElement("canvas").getContext("2d");
-    ctx.fillStyle = hex;
-    const rgb = ctx.fillStyle.match(/\d+/g).map(Number);
-    return rgb;
-  }
-
-  function isLight(rgb) {
-    const [r, g, b] = rgb;
-    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-    return brightness > 180;
-  }
-
-  window.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll('.color-circle').forEach(circle => {
-      const colorName = circle.getAttribute('data-color');
-      try {
-        const rgb = hexToRgb(colorName);
-        if (isLight(rgb)) {
-          circle.style.border = "2px solid #000"; // black border
-        }
-      } catch (e) {
-        console.warn("Color parsing failed for", colorName);
+      
+      // Replace these with actual product data variables or server-side rendered variables
+      const productId = "{{ main_prod.id }}";  // or hardcode for testing: "1234"
+      const productName = "{{ main_prod.productDisplayName }}"; // or "Test Product"
+      const productPrice = parseFloat("{{ main_prod.price|float }}"); // or 19.99
+      const productImage = "{{ main_prod.Image }}"; // or "/static/images/sample.jpg"
+      
+      const newItem = {
+        id: productId,
+        name: productName,
+        price: productPrice,
+        color: selectedColor,
+        size: selectedSize,
+        quantity: 1,
+        image: productImage
+      };
+      
+      // Get existing cart from localStorage or start with empty array
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      
+      // Check if item with same id, color, and size exists
+      const existingIndex = cart.findIndex(item =>
+        item.id === newItem.id &&
+        item.color === newItem.color &&
+        item.size === newItem.size
+      );
+      
+      if (existingIndex !== -1) {
+        // Increase quantity if exists
+        cart[existingIndex].quantity += 1;
+      } else {
+        // Add new item
+        cart.push(newItem);
       }
+      
+      // Save updated cart to localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+      window.location.href = `/outfit_recommendation/${productId}/`;
+      alert(`Added to cart: ${productName} (${selectedColor}, ${selectedSize})`);
+      
+      window.location.href = `/outfit_recommendation/${productId}/`;
+
+
+
+    }
+
+
+
+    function hexToRgb(color) {
+      let ctx = document.createElement("canvas").getContext("2d");
+      ctx.fillStyle = color;
+      let computed = ctx.fillStyle;
+      let rgbMatch = computed.match(/^rgb(a)?\((\d+),\s*(\d+),\s*(\d+)/i);
+      if (rgbMatch) {
+        return [parseInt(rgbMatch[2]), parseInt(rgbMatch[3]), parseInt(rgbMatch[4])];
+      }
+      return [0, 0, 0];
+    }
+
+    function isLight(rgb) {
+      const [r, g, b] = rgb;
+      const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+      return brightness > 180;
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('.color-circle').forEach(circle => {
+        const colorName = circle.getAttribute('data-color');
+        try {
+          const rgb = hexToRgb(colorName);
+          if (isLight(rgb)) {
+            circle.style.border = "2px solid #000"; // black border for light colors
+          }
+        } catch (e) {
+          console.warn("Color parsing failed for", colorName);
+        }
+      });
     });
+    document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.querySelector(".search-bar input");
+    if (searchInput) {
+      searchInput.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+          event.preventDefault(); // prevent form submission if any
+          window.location.href = "/menu";
+        }
+      });
+    }
   });
-</script>
 
-
+  </script>
 </body>
 </html>

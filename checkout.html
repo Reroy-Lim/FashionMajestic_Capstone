@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout - MajestiVision</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e7f5f6;
+      margin: 0;
+      padding: 20px;
+    }
+    h1.title {
+      text-align: center;
+      font-size: 36px;
+      color: #2d4564;
+    }
+    .cart-container {
+      max-width: 1050px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .cart-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    .cart-table th, .cart-table td {
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+    .cart-table th {
+      background-color: #f9f9f9;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .btn {
+      background-color: #5d88c1;
+      color: white;
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #4c70a2;
+    }
+    .payment-method {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .payment-method label {
+      font-size: 18px;
+      margin-right: 10px;
+    }
+    .payment-method select {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .product-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      text-align: center;
+    }
+    .product-image {
+      width: 100px;
+      height: auto;
+      border-radius: 8px;
+    }
+    .product-info {
+      font-weight: bold;
+      color: #2d4564;
+      line-height: 1.2;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="title">Checkout</h1>
+
+  <div class="cart-container">
+    <h2>Selected Products</h2>
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="selected-products">
+        <!-- Selected products will be dynamically inserted here -->
+      </tbody>
+    </table>
+
+    <div style="text-align: right; font-size: 18px; font-weight: bold;">
+      Cart Total: $<span id="checkout-total">0.00</span>
+    </div>
+
+    <div class="payment-method">
+      <label for="payment-method">Choose a payment method:</label>
+      <select id="payment-method">
+        <option value="credit-card">Credit Card</option>
+        <option value="paypal">PayPal</option>
+        <option value="bank-transfer">Bank Transfer</option>
+      </select>
+    </div>
+
+    <div class="button-container">
+      <button class="btn" onclick="window.location.href='/menu'">Back to Menu</button>
+      <button class="btn" onclick="window.location.href='/Settings_Cart'">Back to Cart</button>
+      <button class="btn" id="confirm-checkout">Confirm Checkout</button>
+    </div>
+  </div>
+
+  <script>
+    // Function to render selected products on the checkout page
+    function renderCheckoutPage() {
+      const selectedItems = JSON.parse(localStorage.getItem("selectedItems")) || [];
+      const selectedProductsContainer = document.getElementById("selected-products");
+      const checkoutTotal = document.getElementById("checkout-total");
+      let totalAmount = 0;
+
+      // Clear previous content
+      selectedProductsContainer.innerHTML = "";
+
+      selectedItems.forEach(item => {
+        const totalPrice = item.price * item.quantity;
+        totalAmount += totalPrice;
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td class="product-cell">
+            <img src="/static/images/${item.image}" alt="${item.name}" class="product-image" />
+            <div class="product-info">
+              ${item.name} - ${item.size} - ${item.color}
+            </div>
+          </td>
+          <td>$${item.price.toFixed(2)}</td>
+          <td>${item.quantity}</td>
+          <td>$${totalPrice.toFixed(2)}</td>
+        `;
+        selectedProductsContainer.appendChild(row);
+      });
+
+      // Update cart total
+      checkoutTotal.textContent = totalAmount.toFixed(2);
+    }
+
+    // Event listener for confirming checkout
+    document.getElementById("confirm-checkout").addEventListener("click", function () {
+      const paymentMethod = document.getElementById("payment-method").value;
+      alert(`You selected ${paymentMethod} for payment. Your order has been placed successfully!`);
+
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const selectedItems = JSON.parse(localStorage.getItem("selectedItems")) || [];
+
+      function key(item) {
+        return `${item.id}_${item.size}_${item.color}`;
+      }
+
+      const selectedKeys = selectedItems.map(key);
+      const updatedCart = cart.filter(item => !selectedKeys.includes(key(item)));
+
+      // Save the order to history in localStorage
+      let orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || [];
+      orderHistory.push({
+        date: new Date().toLocaleString(),
+        paymentMethod,
+        items: selectedItems,
+      });
+      localStorage.setItem("orderHistory", JSON.stringify(orderHistory));
+
+      // Update cart and clear selected items
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      localStorage.removeItem("selectedItems");
+
+      window.location.href = '/menu';  // Redirect back to menu (or your desired page)
+    });
+
+    // Render the checkout page when the page is loaded
+    renderCheckoutPage();
+  </script>
+
+</body>
+</html>

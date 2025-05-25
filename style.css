@@ -1,0 +1,274 @@
+
+body {
+    font-family: monospace;
+    font-size: 20px;
+}
+
+.navbar-nav {
+    margin: auto;
+    width: 90%;
+    float: none;
+    text-align: center;
+    padding-left: 17%;
+    padding-right: 13%;
+    font-size: 26px;
+}
+
+.nav-item {
+    padding: 0px 15px 0px 15px
+}
+
+#main-body {
+    margin: auto;
+    width: 90%;
+    padding: 50px 50px;
+    text-align: center;
+}
+
+.stretched-link::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: auto;
+    content: "";
+    background-color: rgba(0,0,0,0);
+}
+
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f5f0;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      background-color: #e78ca8;
+    }
+
+    .navbar button {
+      margin-right: 10px;
+      padding: 5px 15px;
+      border: none;
+      background-color: #5a4012;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .navbar .tab {
+      background-color: #d4cba1;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 50px);
+      padding: 20px;
+    }
+
+    .logo {
+      width: 40%;
+      text-align: center;
+    }
+
+    .logo img {
+      width: 80%;
+    }
+
+    .form-container {
+      width: 40%;
+      background-color: #f9f5f0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      color: #5a4012;
+      margin-bottom: 20px;
+      text-decoration: underline;
+    }
+
+    .form-container label {
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #5a4012;
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #5a4012;
+      border-radius: 5px;
+    }
+
+    .form-container .btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-container .btn-login {
+      background-color: #add8e6; /* Light blue - same as Create button */
+      color: black;
+    }
+
+    .form-container .btn-login:hover {
+      background-color: #9ac7e0;
+    }
+
+    .form-container .google-btn {
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .form-container .google-btn img {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+
+    .form-container .google-btn:hover {
+      background-color: #f0f0f0;
+    }
+
+    .form-container .or-text {
+      text-align: center;
+      margin: 10px 0 5px 0;
+      font-weight: bold;
+      color: #5a4012;
+    }
+
+    .form-container a {
+      color: #5a4012;
+      text-decoration: none;
+      font-size: 12px;
+      text-align: center;
+      display: block;
+      margin-top: 15px;
+    }
+
+  </style>
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: center;
+  text-align: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+}
+
+.warning {
+    color:#f22e52
+  }
+  .one{
+    color:#5eaff7
+  }
+  .safe {
+    color:#2cc421
+  }
+
+.form-group {
+    display:inline-block;
+}
+
+th {
+    text-align: center;
+}
+
+tr:nth-child(odd) {
+  background-color: white;
+  color: black;
+  font-size: 14px;
+}
+
+tr:nth-child(even) {
+  background-color: white;
+  color: black;
+  font-size: 14px;
+}
+
+.table{
+    border: 3px solid black;
+}
+
+.btn-primary:hover {
+  background-color: #2a33b5;
+  color: white;
+}
+.btn-success:hover{
+  background-color: #2c6b0b;
+  color: white;
+}
+
+.button5 {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+  padding:2px;
+}
+
+.button5:hover {
+  background-color: black;
+  color: white;
+}
+
+.btn-warning:hover {
+  border-color: #d9782e;
+  background-color: #d9782e;
+  color: white;
+}
+
+.button4 {
+  background-color: black;
+  color: white;
+  border: 2px solid #555555;
+  padding:2px;
+}
