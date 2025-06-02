@@ -1,0 +1,44 @@
+FashionMajestic is a capstone project that developer by ITE Higher Nitec in AI Application batch 2025. It was a Fashion Recommender System that help to reduce the return rate and increase the high size measurement in UK Measurement.
+
+- Capstone (Folder)
+> __pycache__
+ - Cosine_recommender.cpython-311.pyc
+ - Cosine_recommender.cpython-312.pyc
+> .idea
+ > inspectionProfiles
+  - profiles_settings.xml
+  - Project_Default.xml
+ - .gitignore
+ - misc.xml
+ - modules.xml
+ - Recommender.iml
+ - workspace.xml
+> .vscode
+ - settings.json
+> static
+ > csv_files
+  - data.csv
+ > Image (Get all the image data from https://www.kaggle.com/datasets/paramaggarwal/fashion-product-images-dataset?resource=download)
+ - style.css
+ > Template
+ - 1_Welcome.html
+ - 2Sign-up_.html
+ - 3Login_.html
+ - 4Signin_google_Page_.html
+ - 5selected.html
+ - 6menu.html
+ - based_measurement_recommendscreen_.html
+ - checkout.html
+ - error.html
+ - history.html
+ - Input_measurement_.html.html
+ - outfit_recommendation.html.html
+ - searchFilter.html
+ - Settings_Cart.html
+ - Settings_Measurements.html
+ - Settings_Page.html
+ - shop.html
+ - viewProduct.html
+- __init__.py
+- Cosine_recommender.py
+- data_test.py
